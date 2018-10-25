@@ -1,0 +1,30 @@
+/*背景颜色  */
+page{
+  background: #f0f0f0;
+}
+
+/*图标  */
+.tu{
+  margin-top: 200rpx;
+  margin-left: 80rpx;
+}
+/*收货地址  */
+.add{
+  line-height: 100rpx;
+  margin-left: 180rpx;
+  font-size: 30rpx;
+  color: #999999;
+}
+
+/*添加新地址  */
+.insert{
+  width:700rpx;
+  height: 80rpx;
+  background: red;
+  line-height: 70rpx;
+  margin-left: 30rpx;
+  margin-top:300rpx; 
+  color:white;
+  text-align: center;
+  border-radius:10rpx; 
+}

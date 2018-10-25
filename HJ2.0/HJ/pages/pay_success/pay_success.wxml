@@ -1,0 +1,14 @@
+<view class="content">
+    <view class="pay-success">
+        <image class="pay-success-img" src="../../images/zhifuchenggong.png" />
+        <view class="pay-success-text">支付成功</view>
+    </view>
+    <view class="order-info">
+        <view class="order-info-font1">订单信息</view>
+        <view class="order-info-font2">您购买的商品已存入库开始自动售卖您购买的商品已存入库开始自动售卖您购买的商品已存入库开始自动售卖您购买的商品已存入库开始自动售卖您购买的商品已存入库开始自动售卖</view>
+    </view>
+    <view class='btn'>
+        <view catchtap='backFirstPage' class='btn1'>返回首页</view>
+        <view bindtap='viewOrder' class="btn2">查看订单</view>
+    </view>
+</view>

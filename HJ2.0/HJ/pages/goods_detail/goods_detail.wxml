@@ -1,0 +1,186 @@
+<!-- <view style='height:'>
+
+</view> -->
+<!--轮播图start  -->
+<view class="swiper" style="width: 100%;height:{{px2rpxHeight*750}}px;">
+  <swiper indicator-dots="true" autoplay="true" circular="true" indicator-color="rgba(207,209,210,0.8)" indicator-active-color="#efe5c4">
+    <block wx:for="{{goodsInfo.carouselPicture}}" wx:for-item="goodsImg" wx:key="{{id}}">
+      <swiper-item>
+        <image src="{{serverUrl + goodsImg.img}}" style="width: 100%;height:{{px2rpxHeight*750}}px;" />
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<!--轮播图end  -->
+
+<view class="goods-name" data-id="{{goodsInfo.id}}">
+  {{goodsInfo.gname}}
+</view>
+
+<view class="sell" data-id="{{goodsInfo.id}}">
+  已售:{{goodsInfo.saleCount}}
+</view>
+
+<view class="price-cart" style=" height: {{px2rpxHeight*75}}px;margin-top:20rpx;">
+  <view class="member-price" style="width:{{px2rpxWidth*140}}px;height:{{px2rpxHeight*50}}px;">¥{{goodsInfo.price}}</view>
+  <view class='costprice' style="width:{{px2rpxWidth*140}}px;height:{{px2rpxHeight*50}}px;">￥{{goodsInfo.oriPrice}}</view>
+</view>
+<block wx:if="{{goodsInfo.is_dealer == 1}}">
+  <view class="member-price2" style='margin-left:{{px2rpxWidth*32}}px;'>经销商购买满：{{goodsInfo.dealerTerm}}瓶，享经销商价：¥{{goodsInfo.dealerPrice}}</view>
+</block>
+
+<block wx:if="{{goodsInfo.full}}">
+  <view class="member-price2" style='margin-left:{{px2rpxWidth*32}}px;'>满减商品，满￥{{goodsInfo.full}}减￥{{goodsInfo.reductionPrice}}</view>
+</block>
+
+<block wx:if="{{goodsInfo.discount}}">
+  <view class="member-price2" style='color:#ddd;margin-left:{{px2rpxWidth*32}}px;'>用户享受{{goodsInfo.discount}}折优惠</view>
+</block>
+
+<!-- wx:if="{{goodsInfo.status == 1}}" -->
+<view class="jianju" style="height:{{px2rpxHeight*20}}px;background-color:#eee"></view>
+<view class="number" style="width:100%;height:{{px2rpxHeight*100}}px;">
+  <view style="float:left;font-size:35rpx;">数量</view>
+  <view class="jian" style="width:{{px2rpxWidth*50}}px;height:{{px2rpxHeight*50}}px;" bindtap="minusCount">-</view>
+  <view class="num" style="width:{{px2rpxWidth*80}}px;height:{{px2rpxHeight*50}}px;color:black;">
+    <input style="display:flex;justify-content: center;align-items: center;width:{{px2rpxWidth*80}}px;height:{{px2rpxHeight*50}}px" bindinput='inputNum' bindblur='blurNum' bindconfirm='blurNum' value="{{goods_num}}" type="number" placeholder="1"></input>
+  </view>
+  <view class="jia" style="width:{{px2rpxWidth*50}}px;height:{{px2rpxHeight*50}}px;" bindtap="addCount">+</view>
+</view>
+
+<view class="jianju" style="height:{{px2rpxHeight*20}}px;background-color:#eee"></view>
+
+<!--商品评价 start  -->
+<view class="comment">
+  <view>商品评价 ({{goodsInfo.count}})</view>
+  <view bindtap='viewAllComment' style='font-size:24rpx;color:#cf000d;'>查看全部
+    <image src="../../images/fanhui.png" style='float:right;width:10rpx;height:20rpx;margin-left:10rpx;margin-top:10rpx;' />
+  </view>
+</view>
+
+<block wx:for="{{commentInfo}}" wx:key="{{item.goodsId}}">
+  <view style="border-bottom:4rpx solid #eee;">
+    <view class="short-comment each-user">
+      <!--头像  -->
+      <view>
+        <block wx:if="{{userinfo.photo.length<23}}">
+          <image src='{{serverUrl+item.photo}}' style='width:{{px2rpxWidth*80}}px;height:{{px2rpxWidth*80}}px;border-radius:50%;'></image>
+        </block>
+        <block wx:else>
+          <image src='{{item.photo}}' style='width:{{px2rpxWidth*80}}px;height:{{px2rpxWidth*80}}px;border-radius:50%;'></image>
+        </block>
+      </view>
+      <view class='user-name' style="width:{{px2rpxWidth*220}}px">{{item.nickName}}</view>
+      <view class='time'>{{item.createTime}}</view>
+    </view>
+    <view class="long-comment" style='margin-left:135rpx;font-size:23rpx;'>
+      {{item.detail}}
+    </view>
+    <block wx:if="{{item.img==''}}">
+    </block>
+
+    <block wx:else>
+      <view class="comment-img">
+        <block wx:for="{{item.img}}" wx:for-item="img" wx:key="{{item.id}}">
+          <image src="{{serverUrl + img}}" style="width:{{px2rpxWidth*160}}px;height:{{px2rpxHeight*160}}px;margin-right:6rpx;" />
+        </block>
+      </view>
+    </block>
+  </view>
+</block>
+<!--商品评价 end  -->
+
+
+<view style="clear:both"></view>
+<view class="jianju" style="height:{{px2rpxHeight*20}}px;background-color:#eee"></view>
+<view>
+  <view class="specification-parameter">规格参数</view>
+  <view class="specification-parameter-info">
+    <view> {{goodsInfo.specification}} </view>
+    <view> {{goodsInfo.goodsDetail}} </view>
+  </view>
+</view>
+<view class="jianju" style="height:{{px2rpxHeight*20}}px;background-color:#eee"></view>
+<view>
+  <view class="goods-info">商品详情</view>
+  <view style="text-align:center;">
+    <block wx:for="{{goodsInfo.detailPicture}}" wx:for-item='img' wx:key="{{index}}">
+      <image src="{{serverUrl+img.img}}" mode="widthFix"></image>
+    </block>
+  </view>
+</view>
+
+<!--猜你喜欢 start  -->
+<view style='margin-top:30rpx;height:{{px2rpxHeight*500}}px;'>
+  <view class="guess">猜你喜欢</view>
+  <view class="youlike">
+    <block wx:for="{{youLike}}" wx:key="{{item.id}}">
+      <view bindtap='clickToGoodsDetail' data-id='{{item.id}}' class="youlike-each">
+        <image src="{{serverUrl + item.img}}"></image>
+        <block wx:if="{{item.gname.length>9}}">
+          <view class='caiNmae' style="width:100%;width:100%;height:{{px2rpxHeight*88}}px;word-break:break-all;font-size: 22rpx;">{{item.gname}}</view>
+        </block>
+        <block wx:if="{{item.gname.length<=9}}">
+          <view class='caiNmae' style="width:100%;height:{{px2rpxHeight*86}}px;line-height:80rpx;  font-size: 22rpx;">{{item.gname}}</view>
+        </block>
+        <view style='display:flex'>
+          <view class="likemember">¥{{item.goodsPrice}}</view>
+          <view class='likecostprice'>￥{{item.oriPrice}}</view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
+<!--猜你喜欢 end  -->
+
+<view class="bottom-btn" style='z-index:999999999999'>
+  <view bindtap='joinTheCollection' data-goodsid="{{goodsInfo.id}}" class="custom-service" style='margin-top:10rpx;'>
+    <block wx:if="{{goodsInfo.collection==0}}">
+      <!--点击进行收藏  -->
+      <block wx:if="{{jion==''}}">
+        <view class="">
+          <image src='https://zuoanzac.oss-cn-beijing.aliyuncs.com/collection.png'></image>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="">
+          <image src='https://zuoanzac.oss-cn-beijing.aliyuncs.com/7.png'></image>
+        </view>
+      </block>
+    </block>
+
+    <!--判断数据里是否已经收藏了  -->
+    <block wx:else>
+      <view class="">
+        <image src='https://zuoanzac.oss-cn-beijing.aliyuncs.com/7.png'></image>
+      </view>
+    </block>
+    <view style="margin-top:-10rpx;font-size:24rpx;color:#666">加入收藏</view>
+  </view>
+  <!--购物车  -->
+  <navigator url='/pages/cart/cart'>
+    <view class="carts" style="margin-top:10rpx;width:{{px2rpxWidth*185}}px;height:{{px2rpxHeight*100}}px;">
+      <view class="">
+        <image src='https://zuoanzac.oss-cn-beijing.aliyuncs.com/cart.png'></image>
+      </view>
+      <view style="margin-top:-10rpx;font-size:24rpx;color:#666">购物车</view>
+    </view>
+  </navigator>
+
+  <view class="custom-service ziti" style="width:{{px2rpxWidth*220}}px;height:{{px2rpxHeight*108}}px;">
+    <!--判断满减  -->
+    <block wx:if="{{goodsInfo.reductionId}}">
+      <view bindtap='addToCart' data-id="{{goodsInfo.id}}" data-activityid='{{goodsInfo.reductionId}}'>加入购物车</view>
+    </block>
+    <!--判断折扣  -->
+    <block wx:if="{{goodsInfo.discountId}}">
+      <view bindtap='addToCart' data-id="{{goodsInfo.id}}" data-activityid='{{goodsInfo.discountId}}'>加入购物车</view>
+    </block>
+    <block wx:else>
+      <view bindtap='addToCart' data-id="{{goodsInfo.id}}" data-activityid='-1'>加入购物车</view>
+    </block>
+  </view>
+  <view class="custom-service immediate-sale" style="width:{{px2rpxWidth*220}}px;height:{{px2rpxHeight*108}}px;">
+    <view bindtap='immediatePurchase'>立即购买</view>
+  </view>
+</view>

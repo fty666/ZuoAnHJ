@@ -1,0 +1,47 @@
+page{
+    padding: 30rpx;
+    box-sizing: border-box;
+}
+.each-user{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.biaozhi{
+    border-radius: 50%;
+    /* background-color: #aaa; */
+}
+.user-name{
+    margin-left:30rpx;
+    font-size: 26rpx; 
+    color: #666;
+}
+.user-comment{
+    margin-top:10rpx; 
+    font-size: 26rpx;
+    color:#666;
+}
+.comment-img{
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 6rpx;
+}
+.each-img{
+    margin-right: 10rpx;  
+}
+.comment-each{
+    width: 100%;
+    padding: 20rpx 0;
+    border-bottom: 1rpx solid #ccc;
+}
+.time{
+    font-size: 25rpx;
+    margin-left: 105rpx;
+}
+
+.fon1{
+    font-size: 40rpx;
+    text-align: center;
+    margin-top: 300rpx;
+    letter-spacing: 3rpx;
+}

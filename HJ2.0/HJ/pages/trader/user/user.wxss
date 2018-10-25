@@ -1,0 +1,133 @@
+
+/*头部样式  */
+.head{
+  background: #31323a;
+}
+
+/*头像样式  */
+.file{
+  float:left;
+  border: 1px solid white;
+  margin-left:30rpx;
+  border-radius:50%;
+  overflow: hidden;
+}
+.pictu{
+  width: 150rpx;
+  height: 150rpx;
+
+}
+/* .file image{
+   
+} */
+/*呢称  */
+.nechen{
+  width:30%;
+  color:white;
+  float:left;
+  margin-left:40rpx;
+  margin-top: 20rpx;
+  font-size: 30rpx;
+}
+.img{
+  margin-top:15rpx; 
+  float:left;
+}
+
+/*查看全部订单  */
+.my{
+  font-size: 30rpx;
+  margin-top: 20rpx;
+   margin-left:40rpx; 
+}
+.ding{
+  color:#b6b6b6;
+  font-size: 25rpx;
+  margin-top: 26rpx;
+  margin-left:350rpx;
+}
+
+/*分割线  */
+.xia{
+  width:90%;
+  height: 5rpx;
+  background: #ddd;
+  margin-left:25rpx;
+}
+
+/*图标整体  */
+.zhen{
+  width:20%;
+  float:left;
+  margin-left: 36rpx;
+  margin-top: 20rpx;
+}
+/*图标  */
+/* .biao{
+
+} */
+
+/*字体设置  */
+.font{
+  font-size:24rpx;
+  line-height: 50rpx;
+  margin-left: 17rpx;
+}
+
+.font2{
+  font-size:30rpx;
+  line-height: 100rpx;
+  margin-left: -20rpx;
+}
+
+/*图标整体 2  */
+.tu{
+  width:25%;
+   float:left; 
+   margin-left: 63rpx; 
+  margin-top: 120rpx;
+}
+
+/*会员尊享  */
+.huiyuan{
+  margin-top: 50rpx; 
+  /* height:450rpx; */
+  background: #ddd;
+}
+
+/*字体  */
+.zun{
+  height:50rpx; 
+  margin-left: 300rpx;
+  line-height: 70rpx;
+}
+
+/*滚动会员  */
+.membership-privilege-scroll{
+position: relative;
+width: 200rpx;
+height: 220rpx;
+display: inline-block;
+margin-right: 10rpx; 
+/* border: 1px solid red; */
+}
+.membership-privilege-scroll image{
+width: 200rpx;
+height: 220rpx;
+z-index: 1;
+}
+.membership-privilege-scroll view{
+position: absolute;
+top: 180rpx;
+left: 0rpx;
+width: 100%;
+height: 40rpx;
+text-align: center;
+line-height: 40rpx;
+font-size: 25rpx;
+color: #fff;
+background-color: #999;
+opacity: 0.9;
+/* border: 1px solid red; */
+z-index: 9999;
+}

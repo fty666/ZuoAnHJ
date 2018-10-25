@@ -1,0 +1,135 @@
+/*背景颜色  */
+
+page {
+  background: #ddd;
+}
+
+/*距离顶部边距  */
+
+/* 
+.juli {
+  height: 20rpx;
+  width: 100%;
+} */
+
+/*from页面  */
+
+.from {
+  width: 100%;
+  height: 450rpx;
+  background: white;
+  float: right;
+}
+
+.from2 {
+  width: 100%;
+  height: 960rpx;
+  background: white;
+  float: right;
+}
+
+/*基本设置  */
+
+.shezhi {
+  /* width: 100%;
+  height: 80rpx; */
+  line-height: 80rpx;
+  margin-left: 40rpx;
+}
+
+.mo {
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin-left: 40rpx;
+}
+
+/* 
+.text{
+  padding-top: 35rpx;
+  font-size: 30rpx;
+  width: 300rpx;
+  color: #333333;
+  height: 50rpx;
+} */
+
+.text {
+  padding-top: 14rpx;
+  font-size: 30rpx;
+  /* width: 445rpx; */
+  color: #333;
+  /* height: 65rpx; */
+}
+
+.dayu {
+  width: 15rpx;
+  height: 30rpx;
+  margin-left: 108rpx;
+}
+
+/*边框线  */
+
+.kuandu {
+  height: 5rpx;
+  background: #ddd;
+}
+
+/*保存  */
+
+.insert {
+  width: 90%;
+  height: 80rpx;
+  background: red;
+  line-height: 70rpx;
+  margin-left: 40rpx;
+  margin-top: 100rpx;
+  color: white;
+  text-align: center;
+  border-radius: 10rpx;
+}
+
+.insert2 {
+  width: 90%;
+  height: 80rpx;
+  background: red;
+  line-height: 70rpx;
+  margin-left: 40rpx;
+  margin-top: 100rpx;
+  color: white;
+  text-align: center;
+  border-radius: 10rpx;
+}
+
+/*定位地址  */
+
+.myaddress {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 500rpx;
+  padding-top: 50rpx;
+  box-sizing: border-box;
+  background: white;
+  /* border: 1rpx solid red; */
+}
+
+.myaddress-title {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 20rpx;
+  box-sizing: border-box;
+}
+
+.myaddress-list {
+  margin-top: 20rpx;
+  padding: 0 20rpx 0 70rpx;
+  box-sizing: border-box;
+}
+
+.myaddress-each {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #ccc;
+}

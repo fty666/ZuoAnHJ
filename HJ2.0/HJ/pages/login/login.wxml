@@ -1,0 +1,45 @@
+<view style='width:100%;height:1300rpx;;background:url(../../../images/bjlogin.png) no-repeat 0 0;background-size:100% 100%;'>
+  <view><image src='../../../images/de.png' class='den'></image></view>
+  <view><image src='../../../images/ce.png' class='ce'></image></view>
+
+  <!--输入框  -->
+  <view style='clear:both'></view>
+  <view class='from'>
+     <form bindsubmit="formSubmit" bindreset="formReset">
+        
+        <!--手机号  -->
+        <view class='phone'>
+            <image src='../../../images/User.png' class='tou'></image>
+            <input placeholder="请输入你的手机号" class='text' />
+        </view> 
+        <view class="xia"></view>
+        
+        <!--密码登录  -->
+        <view class='phone'>
+          <image src='../../../images/pass.png' class='tou'></image>
+          <input placeholder="密码" class='text' />
+          <image src='../../../images/Eye.png' class='eye'></image>
+        </view> 
+        <view class="xia"></view>  
+     
+        <!--立即登录  -->
+        <view><image src='../../../images/denlu.png' class='denlu'></image></view>
+
+        <view><image src='../../../images/tiyan.png' class='tiyan'></image></view>
+     </form>
+
+        <!--第三方登录  -->
+    <view>
+        <view class='san'>第三方登录</view>
+        <view class='phone'>
+              <view><image src='../../../images/weibo.png' class='tubiao'></image></view>
+              <view><image src='../../../images/weixin.png' class='tubiao'></image></view>
+              <view><image src='../../../images/qq.png' class='tubiao'></image></view>              
+        </view>
+    </view>
+
+  </view>
+
+  
+
+</view> 

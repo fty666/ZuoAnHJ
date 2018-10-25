@@ -1,0 +1,51 @@
+<!--导航排序 start  -->
+<view class="nav" style="width: 100%;height:{{px2rpxHeight*88}}px;">
+  <view class="nav-each" bindtap='multiple' style="width:{{px2rpxWidth*178}}px;height:{{px2rpxHeight*88}}px;">
+    <text>综合</text>
+    <image src="{{zonghe_png}}" style="width:{{px2rpxWidth*25}}px;height:{{px2rpxHeight*30}}px;" />
+  </view>
+  <view class="nav-each" bindtap='salesVolume' style="width:{{px2rpxWidth*178}}px;height:{{px2rpxHeight*88}}px;">
+    <text>销量</text>
+    <image src="{{xiaoliang_png}}" style="width:{{px2rpxWidth*25}}px;height:{{px2rpxHeight*30}}px;" />
+  </view>
+  <view class="nav-each" bindtap='newProduct' style="width:{{px2rpxWidth*178}}px;height:{{px2rpxHeight*88}}px;">
+    <text>新品</text>
+    <image src="{{xinpin_png}}" style="width:{{px2rpxWidth*25}}px;height:{{px2rpxHeight*30}}px;" />
+  </view>
+  <view class="nav-each" bindtap='myPrice' style="width:{{px2rpxWidth*178}}px;height:{{px2rpxHeight*88}}px;">
+    <text>价格</text>
+    <image src="{{jiage_png}}" style="width:{{px2rpxWidth*25}}px;height:{{px2rpxHeight*30}}px;" />
+  </view>
+</view>
+<!--导航排序 end  -->
+
+<!--商品列表 start  -->
+<view class="goods-list" style="width: 100%;height: {{px2rpxHeight*1115}}px;">
+  <scroll-view scroll-y="true" style='width:100%;height:100%;' bindscrolltolower="scrollToLower">
+    <view class="goods-list-all" wx:for="{{goods}}" wx:key="{{item.id}}">
+      <view class="goods-list-each" style="width:{{px2rpxWidth*342}}px;height:{{px2rpxHeight*460}}px; ">
+        <navigator url='../goods_detail/goods_detail?id={{item.id}}'>
+          <image class="goods-img" src="{{ serverUrl + item.img}}" style="width:{{px2rpxWidth*314}}px;height:{{px2rpxHeight*244}}px;" />
+          <!--判断商品名  -->
+          <block wx:if="{{item.gname.length>12}}">
+            <view class="goods-name" style="width:100%;width:100%;height:{{px2rpxHeight*88}}px;word-break:break-all;">{{item.gname}}</view>
+          </block>
+          <block wx:if="{{item.gname.length<=12}}">
+            <view class="goods-name" style="width:100%;height:{{px2rpxHeight*86}}px;line-height:80rpx;">{{item.gname}}</view>
+          </block>
+
+        </navigator>
+        <view class="goods-price">
+          <!-- <text>¥{{item.price}}</text> -->
+          <view style='display:flex'>
+            <view class="member-price" style="width:{{px2rpxWidth*130}}px;height:{{px2rpxHeight*47*2}}rpx;}}">¥{{item.goodsPrice}}</view>
+            <view class='costprice' style="width:{{px2rpxWidth*130}}px;height:{{px2rpxHeight*47*2}}rpx;">￥{{item.oriPrice}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </scroll-view>
+
+</view>
+<!--商品列表 end  -->

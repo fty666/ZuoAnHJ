@@ -1,0 +1,42 @@
+<form bindsubmit="formSubmit">
+  <!--账户余额  -->
+  <view>
+    <view class="money" style='height:{{px2rpxHeight*100}}px;'>
+      <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;账户余额&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>￥{{sumprices}}</view>
+  </view>
+
+  <!--银行卡信息  -->
+  <view class='banks' style='height:{{px2rpxHeight*100}}px;'>
+    <block wx:if="{{bank}}">
+      <view style='display:flex'>
+        <view class='numbers' style='height:{{px2rpxHeight*100}}px;width:{{px2rpxWidth*510}}px;'>卡号：{{bank.card_no}}</view>
+        <navigator url='/pages/bankCard/bankCardList/bankCardList'>
+          <view class='mores' style='width:{{px2rpxWidth*30}}px;height:{{px2rpxHeight*30}}px;'>
+            <image src='../../../images/dayu.png' style='width:{{px2rpxWidth*40}}px;height:{{px2rpxWidth*40}}px;'></image>
+          </view>
+        </navigator>
+      </view>
+    </block>
+
+    <block wx:else>
+      <view class='font'>添加银行卡</view>
+      <navigator url='/pages/bankCard/bankCardList/bankCardList'>
+        <view class='mores' style='width:{{px2rpxWidth*30}}px;height:{{px2rpxHeight*30}}px;margin-left:440rpx;'>
+          <image src='../../../images/dayu.png' style='width:{{px2rpxWidth*40}}px;height:{{px2rpxWidth*40}}px;'></image>
+        </view>
+      </navigator>
+    </block>
+
+  </view>
+  <!--银行卡完  -->
+
+  <!--提现金额  -->
+  <view class="number" style='height:{{px2rpxHeight*100}}px;'>
+    <input name="cash" style='margin-left:20rpx;' placeholder="输入要体现的金额" placeholder-style="color:red;line-height:20rpx;" />
+  </view>
+
+  <!--确认  -->
+  <view class="submit" style='width:{{px2rpxWidth*710}}px;height:{{px2rpxHeight*80}}px;'>
+    <button formType="submit" type="warn"> 确认提现</button>
+  </view>
+</form>

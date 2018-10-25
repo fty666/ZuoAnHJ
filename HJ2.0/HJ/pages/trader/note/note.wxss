@@ -1,0 +1,206 @@
+/*背景颜色  */
+
+page {
+  background: #ddd;
+}
+
+/*距离顶部  */
+
+.padd {
+  width: 100%;
+}
+
+/*内容总体  */
+
+.content {
+  width: 100%;
+  background: white;
+}
+
+/*账户余额  */
+
+.zhanhu {
+  width: 30%;
+  margin-left: 30rpx;
+  float: left;
+  line-height: 90rpx;
+  font-size: 30rpx;
+}
+
+/*日期设置  */
+
+.date {
+  width: 60%;
+  font-size: 30rpx;
+  color: red;
+  line-height: 90rpx;
+  float: left;
+  display: flex;
+}
+
+.centers {
+  justify-content: flex-end;
+}
+
+/*金额设置  */
+
+.jine {
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+  color: red;
+  width: 30%;
+  float: left;
+  font-size: 30rpx;
+}
+
+/*跳转提现  */
+
+.ti {
+  border: 1px solid red;
+  border-radius: 50rpx;
+  text-align: center;
+  line-height: 55rpx;
+  color: red;
+  font-size: 30rpx;
+  margin-left: 60rpx;
+  float: left;
+}
+
+/*跳转购买  */
+
+.gou {
+  width: 162rpx;
+  height: 60rpx;
+  line-height: 50rpx;
+  margin-left: 50rpx;
+  border: 1px solid red;
+  border-radius: 50rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #ddd;
+  background: red;
+  float: left;
+}
+
+/*text文本  */
+
+.text {
+  width: 83%;
+  font-size: 30rpx;
+  line-height: 100rpx;
+  float: left;
+}
+
+/*订单明细  */
+
+.zongti {
+  width: 100%;
+  background: white;
+}
+
+.ding {
+  height: 30rpx;
+  margin-top: 30rpx;
+  float: left;
+  font-size: 30rpx;
+}
+
+/*下划线  */
+
+.xia {
+  height: 3rpx;
+  background: #ddd;
+}
+
+/*交易记录  */
+
+.zongti2 {
+  width: 100%;
+  background: white;
+}
+
+/*图片样式  */
+
+.picture {
+  float: left;
+  margin-left: 30rpx;
+  margin-top: 10rpx;
+}
+
+/*订单名称  */
+
+.name {
+  font-size: 26rpx;
+  color: #666;
+  margin-top: 20rpx;
+  width: 85%;
+}
+
+/*名称  */
+
+.text {
+  font-size: 26rpx;
+  color: #999;
+  line-height: 60rpx;
+}
+
+.text2 {
+  font-size: 30rpx;
+  line-height: 30rpx;
+  color: #333;
+}
+
+/*时间  */
+
+.jsdate {
+  font-size: 26rpx;
+  color: #ccc;
+  float: right;
+  margin-right: 90rpx;
+  line-height: 80rpx;
+}
+
+/*订单明细  */
+
+.order {
+  display: flex;
+}
+
+.yprice {
+  width: 300rpx;
+  margin-left: 30rpx;
+  margin-top: 40rpx;
+  color: black;
+  line-height: 4rpx;
+}
+
+.sprice {
+  width: 300rpx;
+  margin-left: 59rpx;
+  /* margin-top: 40rpx; */
+  color: red;
+  line-height: 85rpx;
+}
+
+/*调整时间前后的样式  */
+
+.an {
+  margin-top: -35rpx;
+}
+
+/*付款金额样式  */
+
+.pay {
+  width: 200rpx;
+  margin-left: 33rpx;
+}
+
+.pay1 {
+  width: 200rpx;
+  /* margin-left: 50rpx; */
+}
+
+.pay2 {
+  width: 200rpx;
+  margin-left: 36rpx;
+}

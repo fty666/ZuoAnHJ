@@ -1,0 +1,77 @@
+page{
+    background-color: #f0f0f0;
+}
+.nav{
+    display: flex;
+    justify-content: space-around;
+     padding:0 20rpx; 
+     box-sizing: border-box; 
+    background-color: #fff;
+}
+.nav-each{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* width: 178rpx;
+    height: 88rpx; */
+}
+.nav-each text{
+    margin-right: 10rpx;
+}
+
+.goods-list-all{
+    float: left;
+    margin:20rpx 0 0 20rpx; 
+}
+.goods-list-each{
+    padding: 20rpx;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+.goods-name{
+    margin-top:10rpx; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 26rpx;
+    color: #333;
+}
+.goods-price{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20rpx;
+    font-size: 30rpx;
+    color: #ec2525;
+}
+/* .payment{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1110rpx;
+    background-color: #eee;
+    opacity: 0.5;
+} */
+
+
+.member-price {
+    background: #d83030;
+    color: white;
+    font-size: 28rpx;
+    padding-top: 10rpx;
+    /* margin-left: 30rpx; */
+    line-height: 31rpx;
+    border: 1rpx solid red;
+    /* text-decoration: line-through; */
+}
+
+.costprice {
+    background: white;
+    color: #ddd;
+    font-size: 28rpx;
+    padding-top: 10rpx;
+    line-height: 31rpx;
+    text-decoration: line-through;
+    border: 1rpx solid red;
+}
