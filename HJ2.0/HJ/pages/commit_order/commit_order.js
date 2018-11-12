@@ -332,6 +332,7 @@ Page({
     // 添加是否需要发票
     let mydatas = {};
     if (that.data.is_invoice == 1) {
+      console.log('支付有发票')
       //判断个人
       if (that.data.head == 1) {
         if (that.data.unit == '' || that.data.unit == undefined) {
@@ -409,6 +410,7 @@ Page({
         goodsId: that.data.goodsId
       }
     } else {
+      console.log('支付没发票')
       mydatas = {
         userId: app.globalData.userId,
         addrId: that.data.address.id,

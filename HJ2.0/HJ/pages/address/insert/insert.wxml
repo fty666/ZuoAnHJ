@@ -1,59 +1,61 @@
 <view>
-    <block wx:if="{{array.length==0}}">
+  <block wx:if="{{array.length==0}}">
+    <view>
+      <view class='tu'>
+        <image src='https://zuoanzac.oss-cn-beijing.aliyuncs.com/adds.jpg' class='icon' style="height:{{px2rpxHeight*400}}px;width: {{px2rpxWidth*400}}px;"></image>
+      </view>
+      <view>
+        <text class='text'>还没有收货地址，快点去创建吧</text>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="body" wx:for="{{array}}" wx:key="{{item.id}}" style="height:{{px2rpxHeight*250}}px;">
+      <view bindtap='selectAddr' data-addrid='{{item.id}}' data-addrcity='{{item.addrCity}}'>
+        <!--收货人  -->
+        <view class="user">
+          <text decode="{{true}}" space="{{true}}">{{item.receiveName}} &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;  {{item.phone}}</text>
+        </view>
+
+        <!--收货地址  -->
+        <view class="add">{{item.addrCity}}{{item.addrDetail}}</view>
+        <!--边距线  -->
+        <view class="bianju" style="height:{{px2rpxHeight*5}}px;"></view>
+      </view>
+      <!--编辑  -->
+      <view>
         <view>
-            <view class='tu'>
-                <image src='https://zuoanzac.oss-cn-beijing.aliyuncs.com/adds.jpg' class='icon' style="height:{{px2rpxHeight*400}}px;width: {{px2rpxWidth*400}}px;"></image>
-            </view>
-            <view>
-                <text class='text'>还没有收货地址，快点去创建吧</text>
-            </view>
-        </view>
-    </block>
-    <block wx:else>
-        <view class="body" wx:for="{{array}}" wx:key="{{item.id}}" style="height:{{px2rpxHeight*250}}px;">
-            <view bindtap='selectAddr' data-addrid='{{item.id}}' data-addrcity='{{item.addrCity}}'>
-                <!--收货人  -->
-                <view class="user">
-                    <text decode="{{true}}" space="{{true}}">{{item.receiveName}} &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;  {{item.phone}}</text>
-                </view>
+          <!-- 设置默认框 -->
+          <view>
+            <checkbox-group name="checkbox" class="check" data-id="{{item.id}}" bindtap="moren">
+              <label>
+                <checkbox checked="{{item.is_default==1 ? true : '' }}" value="checkbox1" />
+              </label>
+            </checkbox-group>
+            <text class="bianji">默认地址</text>
+          </view>
 
-                <!--收货地址  -->
-                <view class="add">{{item.addrCity}}{{item.addrDetail}}</view>
-                <!--边距线  -->
-                <view class="bianju" style="height:{{px2rpxHeight*5}}px;"></view>
-            </view>
+          <navigator url="/pages/address/update/update?id={{item.id}}" style='float:left;'>
             <!--编辑  -->
-            <view>
-                <view>
-                    <!-- 设置默认框 -->
-                    <view>
-                        <checkbox-group name="checkbox" class="check" data-id="{{item.id}}" bindtap="moren">
-                            <label>
-                                <checkbox checked="{{item.is_default==1 ? true : '' }}" value="checkbox1" />
-                            </label>
-                        </checkbox-group>
-                        <text class="bianji">默认地址</text>
-                    </view>
-
-                    <navigator url="/pages/address/update/update?id={{item.id}}" style='float:left;'>
-                        <!--编辑  -->
-                        <image src='https://zuoanzac.oss-cn-beijing.aliyuncs.com/18.png' class='del' style="width:{{px2rpxWidth*30}}px;height:{{px2rpxHeight*30}}px;margin-left:250rpx;" ></image>
-                        <text decode="{{true}}" class="bianji">编辑</text>
-                    </navigator>
-                    <!--删除  -->
-                    <view style='float:left;'>
-                        <image src='https://zuoanzac.oss-cn-beijing.aliyuncs.com/del.png' class='del' style="width: {{px2rpxWidth*30}}px;height:{{px2rpxHeight*30}}px;"></image>
-                        <text decode="{{true}}" class="bianji" bindtap='deletes' data-id="{{item.id}}">删除</text>
-                    </view>
-                </view>
-            </view>
-
+            <image src='https://zuoanzac.oss-cn-beijing.aliyuncs.com/18.png' class='del' style="width:{{px2rpxWidth*30}}px;height:{{px2rpxHeight*30}}px;margin-left:250rpx;"></image>
+            <text decode="{{true}}" class="bianji">编辑</text>
+          </navigator>
+          <!--删除  -->
+          <view style='float:left;'>
+            <image src='https://zuoanzac.oss-cn-beijing.aliyuncs.com/del.png' class='del' style="width: {{px2rpxWidth*30}}px;height:{{px2rpxHeight*30}}px;"></image>
+            <text decode="{{true}}" class="bianji" bindtap='deletes' data-id="{{item.id}}">删除</text>
+          </view>
         </view>
-    </block>
+      </view>
+
+    </view>
+  </block>
 </view>
 <!--添加地址  -->
-<view class="flex-center" style='width:100%;margin-top:{{px2rpxHeight*20}}px;'>
+<navigator url='/pages/address/add/add'>
+  <view class="flex-center" style='width:100%;margin-top:{{px2rpxHeight*20}}px;'>
     <view class="insert flex-center" style="height:{{px2rpxHeight*80}}px;">
-        <navigator class="flex-center" url="/pages/address/add/add">添加新地址</navigator>
+      <view class="flex-center">添加新地址</view>
     </view>
-</view>
+  </view>
+</navigator>

@@ -94,8 +94,8 @@
     </view>
   </view>
 
-  <view style='height:{{px2rpxHeight*680}}px;width:100%; '>
-    <scroll-view scroll-y style="height: 100%">
+  <view style='height:{{px2rpxHeight*400}}px;width:100%; '>
+    <!-- <scroll-view scroll-y style="height: 100%"> -->
       <view class="jianju" style="background-color:#eee;margin-top:20rpx;height:20rpx;"></view>
       <!--商品列表  -->
       <view>
@@ -114,12 +114,12 @@
         </view>
       </view>
 
-      <view class="bottom" style='margin-bottom:98rpx; '>
+      <!-- <view class="bottom" style='margin-bottom:98rpx; '>
         <view class="bottom-ad" style='height:{{px2rpxHeight*450}}rpx; '>
           <image src="https://zuoanzac.oss-cn-beijing.aliyuncs.com/buy.png" style="width:{{px2rpxWidth*710}}px;height:{{px2rpxHeight*180}}px;margin-top:{{px2rpxHeight*17}}px;" catchtap='buy'></image>
         </view>
-      </view>
-    </scroll-view>
+      </view> -->
+    <!-- </scroll-view> -->
   </view>
 
 

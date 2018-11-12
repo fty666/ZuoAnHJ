@@ -141,14 +141,14 @@ function kumyWxRequest(myurl, mydata, mysufun) {
           wx.navigateBack({
             delta: 1
           });
-        }, 2000)
+        }, 3000)
 
         wx.showToast({
           icon: 'none',
           //    title: '您的网络太差'
+          duration: 5000,
           title: res.data.message,
         });
-
       }
     }
   });

@@ -1,12 +1,5 @@
-<!-- <view style='height:36rpx;'>
-  <swiper indicator-dots="" autoplay="true" interval="5000" duration="5000">
-    <block wx:for="[1,2,3]" wx:key="{{index}}">
-      <swiper-item style="color:red">
-        测试版，金额非实际价格望体谅！
-      </swiper-item>
-    </block>
-  </swiper>
-</view> -->
+
+
 <view class='rel' style='height:auto;width:100%;'>
   <!--搜索框  -->
   <view class='search'>
@@ -16,9 +9,9 @@
       <input class="input" style="height:{{px2rpxHeight*40*2}}rpx;width:{{px2rpxWidth*570*2}}rpx;margin-left:{{px2rpxWidth*10}}px; " type="text" placeholder="{{cakes}}" confirm-type="search" bindblur="inputBlur" bindconfirm="inputConfirm" placeholder-style="color:#959698"
       />
     </view>
-    <!--折扣图片  -->
-    <view catchtap='activity' class='sha'>
-      <image src='https://zuoanzac.oss-cn-beijing.aliyuncs.com/bj.png' style="width:{{px2rpxWidth*700}}px;height:{{px2rpxWidth*246}}px;margin-left:{{px2rpxWidth*13}}px;"></image>
+    <!--折扣图片  catchtap='activity' -->
+    <view  class='sha'>
+      <image   src='https://zuoanzac.oss-cn-beijing.aliyuncs.com/bj.png' style="width:{{px2rpxWidth*700}}px;height:{{px2rpxWidth*246}}px;margin-left:{{px2rpxWidth*13}}px;"></image>
     </view>
   </view>
 
@@ -54,16 +47,17 @@
         <image src='https://zuoanzac.oss-cn-beijing.aliyuncs.com/1.png' style='width:{{px2rpxWidth*300*2}}rpx;height:{{px2rpxHeight*330*2}}rpx;'></image>
       </view>
 
+      <!--catchtap='activity'  -->
       <view class="cc" style="width: 50%;height:{{px2rpxHeight*350*2}}rpx;">
-        <view class="c2" catchtap='activity' style="width: 100%;height:{{px2rpxHeight*170*2}}rpx; margin-left:{{px2rpxWidth*20}}px; margin-top:{{px2rpxHeight*30}}px;">
+        <view class="c2"  style="width: 100%;height:{{px2rpxHeight*170*2}}rpx; margin-left:{{px2rpxWidth*20}}px; margin-top:{{px2rpxHeight*30}}px;">
           <image src='https://zuoanzac.oss-cn-beijing.aliyuncs.com/bj.png' style="width:{{px2rpxWidth*380*2}}rpx;height:{{px2rpxHeight*150*2}}rpx;"></image>
         </view>
 
-        <navigator url='/pages/reductionList/reductionList'>
+        <!-- <navigator url='/pages/reductionList/reductionList'> -->
           <view class="c3" style="width: 100%;height:{{px2rpxHeight*170*2}}rpx; margin-left:{{px2rpxWidth*20}}px; margin-top:{{px2rpxHeight*12}}px;">
             <image src='https://zuoanzac.oss-cn-beijing.aliyuncs.com/c3.png' style="width:{{px2rpxWidth*380*2}}rpx;height:{{px2rpxHeight*150*2}}rpx;"></image>
           </view>
-        </navigator>
+        <!-- </navigator> -->
       </view>
 
     </view>

@@ -38,6 +38,7 @@ App({
               'content-type': 'application/x-www-form-urlencoded'
             },
             success: function (data) {
+              console.log(data)
               // 把用户信息加入缓存
               wx.setStorageSync('userInfo', data.data.data);
               that.globalData.userId = data.data.data.id;
@@ -78,7 +79,6 @@ App({
           })
         }
       }
-
     })
     // 获取页面信息
     let systemInfo = wx.getSystemInfoSync();

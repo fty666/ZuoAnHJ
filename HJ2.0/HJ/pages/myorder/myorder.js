@@ -56,7 +56,6 @@ Page({
     let that = this;
     let mystatus = '';
     if (options.status) {
-      console.log('pppppppppppp')
       mystatus = options.status;
     } else {
       mystatus = -1;
