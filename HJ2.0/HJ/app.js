@@ -1,5 +1,5 @@
 //app.js
-// var baseUrl = 'http://192.168.1.153:8081/';
+// var baseUrl = 'http://192.168.1.153:8080/';
 // var baseUrl = 'http://192.168.1.117:8080/';
 // var baseUrl = 'http://192.168.1.195:8080/';
 // var baseUrl = 'http://39.107.70.80:8080/';
@@ -29,7 +29,7 @@ App({
           wx.request({
             url: 'https://www.zuoancellar.com/redwine/user/userLogin',
             // url: 'http://192.168.1.195:8080/redwine/user/userLogin',
-            // url: 'http://192.168.1.153:8081/redwine/user/userLogin',
+            // url: 'http://192.168.1.153:8080/redwine/user/userLogin',
             // url: 'http://192.168.1.117:8080/redwine/user/userLogin',
             // url: 'http://39.107.70.80:8080/redwine/user/userLogin',
             method: 'POST',

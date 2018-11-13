@@ -80,7 +80,6 @@ Page({
       })
       let uuId = commit_order.orderUUId;
       util.myWxRequest(app.globalData.getOrdersByPayUUID, { orderUUId: uuId }, function (res) {
-
         that.setData({
           UUgood: res.data.data.ordersMains,
           Umoney: res.data.data.moneys,

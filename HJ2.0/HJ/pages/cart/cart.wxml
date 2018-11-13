@@ -36,7 +36,6 @@
 
               <!--购物车加减数量  -->
               <view class="number">
-
                 <!--普通购买数量  -->
                 <view class="jian" style="width: {{px2rpxWidth*50}}px;height:{{px2rpxHeight*50}}px;" bindtap="minusCount" data-index="{{index}}">-</view>
                 <view class="num" style="width: {{px2rpxWidth*80}}px;height:{{px2rpxHeight*50}}px;">

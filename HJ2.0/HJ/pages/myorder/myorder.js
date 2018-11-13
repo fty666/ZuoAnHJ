@@ -152,8 +152,10 @@ Page({
   pays: function (e) {
     let index = e.currentTarget.dataset.index;
     app.globalData.buyGoods = this.data.myorder[index];
-    wx.navigateTo({
-      url: '/pages/commit_order/commit_order',
+    wx.nextTick(function () {
+      wx.navigateTo({
+        url: '/pages/commit_order/commit_order',
+      })
     })
   },
 

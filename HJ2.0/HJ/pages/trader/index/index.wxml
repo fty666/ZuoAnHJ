@@ -1,5 +1,3 @@
-
-
 <view class='rel' style='height:auto;width:100%;'>
   <!--搜索框  -->
   <view class='search'>
@@ -10,8 +8,8 @@
       />
     </view>
     <!--折扣图片  catchtap='activity' -->
-    <view  class='sha'>
-      <image   src='https://zuoanzac.oss-cn-beijing.aliyuncs.com/bj.png' style="width:{{px2rpxWidth*700}}px;height:{{px2rpxWidth*246}}px;margin-left:{{px2rpxWidth*13}}px;"></image>
+    <view class='sha'>
+      <image src='https://zuoanzac.oss-cn-beijing.aliyuncs.com/head2.jpg' style="width:{{px2rpxWidth*700}}px;height:{{px2rpxWidth*246}}px;margin-left:{{px2rpxWidth*13}}px;"></image>
     </view>
   </view>
 
@@ -42,25 +40,27 @@
   <!--商品图片  -->
   <view class="content" style="width: 100%;height:{{px2rpxHeight*390*2}}rpx;">
     <!--内容 1  -->
-    <view>
-      <view class="c1" style="width: 40%;height:{{px2rpxHeight*350*2}}rpx;margin-left:{{px2rpxWidth*20}}px; margin-top:{{px2rpxHeight*30}}px;">
+    <!-- <view> -->
+    <!-- <view class="c1" style="width: 40%;height:{{px2rpxHeight*350*2}}rpx;margin-left:{{px2rpxWidth*20}}px; margin-top:{{px2rpxHeight*30}}px;">
         <image src='https://zuoanzac.oss-cn-beijing.aliyuncs.com/1.png' style='width:{{px2rpxWidth*300*2}}rpx;height:{{px2rpxHeight*330*2}}rpx;'></image>
-      </view>
+      </view> -->
 
-      <!--catchtap='activity'  -->
-      <view class="cc" style="width: 50%;height:{{px2rpxHeight*350*2}}rpx;">
+    <!--catchtap='activity'  -->
+    <!-- <view class="cc" style="width: 50%;height:{{px2rpxHeight*350*2}}rpx;">
         <view class="c2"  style="width: 100%;height:{{px2rpxHeight*170*2}}rpx; margin-left:{{px2rpxWidth*20}}px; margin-top:{{px2rpxHeight*30}}px;">
           <image src='https://zuoanzac.oss-cn-beijing.aliyuncs.com/bj.png' style="width:{{px2rpxWidth*380*2}}rpx;height:{{px2rpxHeight*150*2}}rpx;"></image>
-        </view>
+        </view> -->
 
-        <!-- <navigator url='/pages/reductionList/reductionList'> -->
-          <view class="c3" style="width: 100%;height:{{px2rpxHeight*170*2}}rpx; margin-left:{{px2rpxWidth*20}}px; margin-top:{{px2rpxHeight*12}}px;">
+    <!-- <navigator url='/pages/reductionList/reductionList'> -->
+    <!-- <view class="c3" style="width: 100%;height:{{px2rpxHeight*170*2}}rpx; margin-left:{{px2rpxWidth*20}}px; margin-top:{{px2rpxHeight*12}}px;">
             <image src='https://zuoanzac.oss-cn-beijing.aliyuncs.com/c3.png' style="width:{{px2rpxWidth*380*2}}rpx;height:{{px2rpxHeight*150*2}}rpx;"></image>
-          </view>
-        <!-- </navigator> -->
-      </view>
+          </view> -->
+    <!-- </navigator> -->
+    <!-- </view> -->
+    <!-- </view> -->
 
-    </view>
+  <image src='https://zuoanzac.oss-cn-beijing.aliyuncs.com/body2.jpg' style='width: 100%;height:{{px2rpxHeight*390*2}}rpx;'></image>
+
     <view style='clear:both'></view>
   </view>
 
