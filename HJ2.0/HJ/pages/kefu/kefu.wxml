@@ -5,7 +5,7 @@
 <!--退换货原因  -->
 <form bindsubmit="formSubmit">
   <view class='tui' style='height:300rpx;'>
-    <textarea name="content" placeholder="留下您的宝贵意见" placeholder-style="height:180rpx;" name="content" auto-focus />
+    <textarea name="content" placeholder="提供您的订单号、联系方式，方便为您提供优质客服服务" placeholder-style="height:180rpx;" class='textarea-inherit' name="content"  />
   </view>
 
   <view class="addimage" style='background:white;z-index:99999;'>
@@ -22,7 +22,7 @@
     <image src="https://zuoanzac.oss-cn-beijing.aliyuncs.com/kefu.png"></image>
     <view class="lianxikefu-font">
       <view class="lianxikefu-font1">联系客服</view>
-      <view class="lianxikefu-font2">联系客服为您提供贴心服务</view>
+      <view class="lianxikefu-font2">联系客服为您提供贴心服务(9:00-21:00)</view>
     </view>
   </view>
   <view style='border:3rpx solid #ddd'></view>

@@ -1,11 +1,5 @@
-<view class="comment" style="height:{{px2rpxHeight*960}}px; ">
+<view class="comment" style="height:{{px2rpxHeight*990}}px; ">
   <view class="goods-info">
-    <!-- <view class="goods-img">
-      <image src="{{serverUrl+goodsInfo.img}}" style="width:{{px2rpxWidth*80}}px;height:{{px2rpxHeight*80}}px;"></image>
-    </view>
-    <view class="goods-name" style="width:{{px2rpxWidth*560}}px; ">
-      {{goodsInfo.gname}}
-    </view> -->
     <view>评论的商品</view>
   </view>
   <!--商品评价  -->
@@ -28,30 +22,27 @@
   <view>
     <view style='font-size:40rpx;text-align:center;'>物流评分</view>
     <block wx:for="{{stars}}" wx:key="index">
-      <view style='margin-left:100rpx;'>
+      <view style='margin-left:{{px2rpxWidth*100}}px;'>
         <image class="star-image" style="margin-left:{{item==0 ? '50': 40+(item*100) }}rpx; width:{{px2rpxWidth*80}}px;height:{{px2rpxHeight*80}}px;" src="{{logistics >item ?selectedSrc:normalSrc}}">
           <view class="item" data-key="{{item+1}}" bindtap="wuliusLeft"></view>
-          <!-- <view class="item"  data-key="{{item+1}}" bindtap="wuliuRight"></view> -->
         </image>
       </view>
     </block>
-
   </view>
 
   <!--服务态度评分  -->
-  <view style='padding-top:100rpx;'>
-    <view style='font-size:40rpx;text-align:center;margin-top:90rpx;'>服务态度评分</view>
+  <view style='padding-top:{{px2rpxHeight*100}}px;'>
+    <view style='font-size:40rpx;text-align:center;margin-top:{{px2rpxHeight*90}}px;'>服务态度评分</view>
     <block wx:for="{{stars}}" wx:key="index">
-      <view style='margin-left:100rpx;'>
-        <image class="star2" style="margin-left:{{item==0 ? '50': 40+(item*100) }}rpx; width:{{px2rpxWidth*80}}px;height:{{px2rpxHeight*80}}px;margin-top:45rpx;" src="{{qos >item ?selectedSrc:normalSrc}}">
+      <view style='margin-left:{{px2rpxWidth*100}}px;'>
+        <image class="star2" style="margin-left:{{item==0 ? '50': 40+(item*100) }}rpx; width:{{px2rpxWidth*80}}px;height:{{px2rpxHeight*80}}px;margin-top:{{px2rpxHeight*115}}px;" src="{{qos >item ?selectedSrc:normalSrc}}">
           <view class="item" data-key="{{item+1}}" bindtap="qosLeft"></view>
-          <!-- <view class="item" style="left:75rpx" data-key="{{item+1}}" bindtap="qosRight"></view> -->
         </image>
       </view>
     </block>
   </view>
 
-  <view style="margin-top:220rpx;">
+  <view style="margin-top:{{px2rpxHeight*220}}px;">
     <button bindtap='publishComment' type='default' style='border-radius:10rpx;'>确定</button>
   </view>
 </view>

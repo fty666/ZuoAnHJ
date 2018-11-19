@@ -329,7 +329,7 @@ Page({
   commitOrder: function () {
     var that = this;
     // 添加是否需要发票
-    let mydatas = {};
+    var mydatas = {};
     if (that.data.is_invoice == 1) {
       console.log('支付有发票')
       //判断个人
@@ -363,7 +363,7 @@ Page({
           })
           return false;
         }
-        if (that.data.numbers == '' || that.data.numbers == undefined ) {
+        if (that.data.numbers == '' || that.data.numbers == undefined) {
           wx.showToast({
             title: '纳税人信息有误',
             icon: 'none'
@@ -372,7 +372,7 @@ Page({
         }
       }
 
-      if (that.data.mobile == '' || that.data.mobile==undefined) {
+      if (that.data.mobile == '' || that.data.mobile == undefined) {
         wx.showToast({
           title: '手机号有误',
           icon: 'none'
@@ -422,12 +422,25 @@ Page({
       }
     }
 
-    util.myWxRequest(app.globalData.addInvoiceUrl, mydatas, function (res) {
-    })
+
 
     // 测试支付
-    // util.myWxRequest(app.globalData.huidiao, { out_trade_no: that.data.ZFuuid }, function (res) {
-    // })
+    // wx.request({
+    //   url: 'http://192.168.1.153:8080/redwine/order/huidiao',
+    //   method: 'POST',
+    //   data: { out_trade_no: that.data.ZFuuid},
+    //   header: {
+    //     'content-type': 'application/x-www-form-urlencoded'
+    //   },
+    //   success: function (res) {
+    //     if (res.data.state == 1) {
+    //       mysufun(res);
+    //     } else {
+    //       util.myWxRequest(app.globalData.addInvoiceUrl, mydatas, function (res) {
+    //       })
+    //     }
+    //   }
+    // });
     // wx.navigateTo({
     //   url: '/pages/pay_success/pay_success'
     // })
@@ -448,6 +461,10 @@ Page({
         'signType': 'MD5',
         'paySign': res.data.data.paySign,
         'success': function (res) {
+          // 发票支付
+          util.myWxRequest(app.globalData.addInvoiceUrl, mydatas, function (res) {
+          })
+
           app.globalData.buyGoods = '';
           // 支付成功通知商家
           let now = util.formatDate(new Date().getTime());
