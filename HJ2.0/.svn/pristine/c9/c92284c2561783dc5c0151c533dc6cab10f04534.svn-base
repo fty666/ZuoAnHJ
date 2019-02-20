@@ -1,0 +1,39 @@
+<view class="flex-column-center">
+    <!--温馨提示  -->
+    <view class='waibain flex-column-center' style="width:{{px2rpxWidth*630}}px">
+        <!--温馨提示  -->
+        <view class="flex-center">温馨提示</view>
+
+        <!--内容  -->
+        <view class="mt10">
+            <view class='flex-center ti2'>您还没有创建收货地址</view>
+            <view class='flex-center ti2'>是否立即创建</view>
+        </view>
+
+        <!--按钮  -->
+        <view class="flex-between" style='width:100%;margin-top:{{px2rpxHeight*135}}px;'>
+            <!--取消  -->
+            <view class="bt" style="width:50%;height: {{px2rpxHeight*90}}px;">
+                <navigator url="/pages/address/address1/address1">
+                    <button>取消</button>
+                </navigator>
+            </view>
+
+            <!--确定  -->
+            <view class="bt" style="width:50%;height: {{px2rpxHeight*90}}px;">
+                <navigator url="/pages/address/add/add">
+                    <button type="warn" >确定</button>
+                </navigator>
+            </view>
+        </view>
+    </view>
+
+    <view class="juli" style="height:{{px2rpxHeight*200}}px;width:100%;"></view>
+
+    <!-- 页面内容   -->
+    <!-- <view class="insert" style="width:80%;height:{{px2rpxHeight*80}}px;line-height:{{px2rpxHeight*90}}px;  margin-top:{{150*px2rpxHeight}}px; ">
+        <navigator url="/pages/address/add/add">
+            添加新地址
+        </navigator>
+    </view> -->
+</view>

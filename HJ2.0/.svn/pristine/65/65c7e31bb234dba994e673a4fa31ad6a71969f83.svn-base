@@ -1,0 +1,112 @@
+<view>
+  <view class="jl"></view>
+  <!--距离顶部  -->
+  <view class="from">
+    <form bindsubmit="formSubmit" bindreset="formReset">
+      <!--头像设置  -->
+      <view class="section">
+        <view class="file">头像</view>
+        <view class="picture" bindtap='immediate_sales'>
+          <block wx:if="{{userinfo.photo.length<23}}">
+            <image src="{{serverUrl}}{{img}}" style='width:140rpx;height:140rpx;'></image>
+          </block>
+          <block wx:else>
+            <image src="{{img}}" style='width:140rpx;height:140rpx;'></image>
+          </block>
+        </view>
+      </view>
+
+      <!--距离设置  -->
+      <view style="clear:both;"></view>
+      <view class="kuandu"></view>
+
+      <!--昵称  -->
+      <view class="section">
+        <view class="nechen">昵称</view>
+        <view class="shezhi">
+          <navigator url="/pages/users/nechen/nechen?name={{necheng}} " hover-class="navigator-hover">
+            <input name="nickName" disabled='true' value="{{necheng}}" />
+          </navigator>
+        </view>
+        <view style="clear:both;"></view>
+      </view>
+
+      <!--距离设置  -->
+      <view style="clear:both;"></view>
+      <view class="kuandu"></view>
+
+      <!--性别  -->
+      <picker bindchange="update" value="{{index}}" range="{{array}}">
+        <view class="section">
+          <view class="nechen">性别</view>
+          <view class="picker">
+            <view class="shezhi">
+              <input name="sex" disabled='true' value="{{sex}} " /> </view>
+          </view>
+        </view>
+      </picker>
+
+
+      <!--距离设置  -->
+      <view style="clear:both;"></view>
+      <view class="kuandu"></view>
+
+      <!--日期选择器  -->
+      <picker mode="date" value="{{date}}" start="" end="" bindchange="birthday">
+        <view class="picker">
+          <view class="nechen">生日</view>
+          <view class="shezhi">
+            <input name="birth" disabled='true' value="  {{date}} " /> </view>
+        </view>
+      </picker>
+
+      <!--距离设置  -->
+      <view style="clear:both;"></view>
+      <view style='height:5px;background:#ddd;'></view>
+
+      <!--手机号验证  -->
+      <view class="section">
+        <view class="nechen">手机号</view>
+        <view class="shezhi">
+          <input name="phone" type='number' bindinput='getTel' placeholder='请输入您的电话号码' />
+        </view>
+        <view style="clear:both;"></view>
+      </view>
+
+      <view style='display:flex;'>
+        <view class='tel'>
+          <input name="telcodes" class='ma' bindinput="codes" placeholder='请输入验证码'></input>
+        </view>
+        <view class='code'>
+          <button type='primary' catchtap='sendCode' class='code' data-mobile='{{tel}}' disabled='{{disabled}}'>{{send_code}}</button>
+        </view>
+      </view>
+
+      <!--地址管理  -->
+      <!-- <view class="address"style='width:100;'>
+                <label>
+                <navigator url="/pages/address/address/address"> 
+                    <view  bindtap='guanli'>地址管理</view>
+                </navigator> 
+                </label>
+            </view> -->
+
+      <!--头像提交页面  -->
+      <view hidden="{{immediate_sale_hidden}}">
+        <view bindtap='cancel_sale' class="covering-layer"></view>
+        <view class="immediate-sales">
+          <view class="pai" bindtap='photo'>拍摄</view>
+          <view class='xia'></view>
+          <view class="ben" bindtap='local'>本地选择</view>
+          <view class='xia2'></view>
+          <view class='esc' catchtap='cancel_sale'>取消</view>
+        </view>
+      </view>
+
+      <view class="sub">
+        <button formType="submit" type='warn'>保存</button>
+      </view>
+
+    </form>
+  </view>
+</view>

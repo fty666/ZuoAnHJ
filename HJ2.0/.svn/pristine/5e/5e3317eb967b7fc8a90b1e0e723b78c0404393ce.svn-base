@@ -1,0 +1,128 @@
+<!--搜索start  -->
+<view class="search" style="width: 100%;height:{{px2rpxHeight*66}}px;">
+    <view class="form" style="width:85%;height:66rpx;">
+        <image class="btn" style="width:{{px2rpxWidth*40}}px;height:{{px2rpxWidth*40}}px;" src="/images/icon_search.png" bindtap="searchGoods"></image>
+        <input class="input" type="text" placeholder="输入商品名称" placeholder-style="color:black" confirm-type="search" bindblur="inputBlur" bindconfirm="inputConfirm" />
+    </view>
+    <image src="../../images/lindang.png" style="width:{{px2rpxWidth*40}}px;height:{{px2rpxWidth*40}}px;" bindtap="searchGoods" />
+</view>
+<!--搜索end  -->
+
+<!--广告start  -->
+<view>
+    <navigator url='/pages/seckill/seckill'>
+        <image class="adv" style="width: 100%;height:{{px2rpxHeight*200}}px;" src='https://zuoanzac.oss-cn-beijing.aliyuncs.com/bj.png' />
+    </navigator>
+
+</view>
+<!--广告end  -->
+
+<view style='position:relative'>
+    <!--分类  -->
+    <view class="category" style='width:100%;height:100rpx;'>
+        <scroll-view scroll-x="true" style='width:100%;height:100%;'>
+            <view class="kind1 "  catchtap='recommend'>
+                <view class='kind' class="{{style==0 ? 'styles':''}}">推荐</view>
+                <!-- <view class='xia' style='top:{{35*px2rpxHeight}}px;left:{{100*px2rpxWidth}}px;'>
+                    <image src='https://zuoanzac.oss-cn-beijing.aliyuncs.com/list.png' style="width:{{px2rpxWidth*15}}px;height:{{px2rpxHeight*12}}px;"></image>
+                </view> -->
+            </view>
+
+            <view class="kind1 "  catchtap='classifys'>
+                <view class='kind' class="{{style==7 ? 'styles':''}}">类型</view>
+                <!-- <view class='xia' style='top:{{35*px2rpxHeight}}px;left:{{100*px2rpxWidth}}px;'>
+                    <image src='https://zuoanzac.oss-cn-beijing.aliyuncs.com/list.png' class='xia' style="width:{{px2rpxWidth*15}}px;height:{{px2rpxHeight*12}}px;"></image>
+                </view> -->
+            </view>
+
+            <view class="kind1 "  catchtap='places'>
+                <view class='kind' class="{{style==1 ? 'styles':''}}">产地</view>
+                <!-- <view class='xia' style='top:{{35*px2rpxHeight}}px;left:{{100*px2rpxWidth}}px;'>
+                    <image src='https://zuoanzac.oss-cn-beijing.aliyuncs.com/list.png' class='xia' style="width:{{px2rpxWidth*15}}px;height:{{px2rpxHeight*12}}px;"></image>
+                </view> -->
+            </view>
+
+            <view class="kind1 "  catchtap='variety'>
+                <view class='kind' class="{{style==5 ? 'styles':''}}">品种</view>
+                <!-- <view class='xia' style='top:{{35*px2rpxHeight}}px;left:{{100*px2rpxWidth}}px;'>
+                    <image src='https://zuoanzac.oss-cn-beijing.aliyuncs.com/list.png' class='xia' style="width:{{px2rpxWidth*15}}px;height:{{px2rpxHeight*12}}px;"></image>
+                </view> -->
+            </view>
+
+            <view class="kind1 "  catchtap='character'>
+                <view class='kind' class="{{style==6 ? 'styles':''}}">等级</view>
+                <!-- <view class='xia' style='top:{{35*px2rpxHeight}}px;left:{{100*px2rpxWidth}}px;'>
+                    <image src='https://zuoanzac.oss-cn-beijing.aliyuncs.com/list.png' class='xia' style="width:{{px2rpxWidth*15}}px;height:{{px2rpxHeight*12}}px;"></image>
+                </view> -->
+            </view>
+
+            <view class="kind1 "  catchtap='price'>
+                <view class='kind' class="{{style==2 ? 'styles':''}}">价格</view>
+                <!-- <view class='xia' style='top:{{35*px2rpxHeight}}px;left:{{100*px2rpxWidth}}px;'>
+                    <image src='https://zuoanzac.oss-cn-beijing.aliyuncs.com/list.png' class='xia' style="width:{{px2rpxWidth*15}}px;height:{{px2rpxHeight*12}}px;"></image>
+                </view> -->
+            </view>
+
+            <view class="kind1 "  catchtap='capacity'>
+                <view class='kind' class="{{style==3 ? 'styles':''}}">容量</view>
+                <!-- <view class='xia' style='top:{{35*px2rpxHeight}}px;left:{{100*px2rpxWidth}}px;'>
+                    <image src='https://zuoanzac.oss-cn-beijing.aliyuncs.com/list.png' class='xia' style="width:{{px2rpxWidth*15}}px;height:{{px2rpxHeight*12}}px;"></image>
+                </view> -->
+            </view>
+
+            <view class="kind1 "  catchtap='year'>
+                <view class='kind' class="{{style==8 ? 'styles':''}}">年份</view>
+                <!-- <view class='xia' style='top:{{34*px2rpxHeight}}px;left:{{100*px2rpxWidth}}px;'>
+                    <image src='https://zuoanzac.oss-cn-beijing.aliyuncs.com/list.png' class='xia' style="width:{{px2rpxWidth*15}}px;height:{{px2rpxHeight*12}}px;"></image>
+                </view> -->
+            </view>
+
+        </scroll-view>
+    </view>
+    <!--分类完  -->
+
+    <!-- 具体   -->
+    <!--分类完  -->
+    <block wx:if="{{chidden==true}}">
+        <view class='more'>
+            <!-- <scroll-view class="hua" scroll-x="true"> -->
+            <block wx:for="{{goodsClass}}" wx:key="{{index}}">
+                <view class="specifics {{kinds==index ? 'back':''}}" style="width:{{px2rpxWidth*137*2}}rpx;height:{{px2rpxHeight*66*2}}rpx;" catchtap='concrete' data-index='{{index}}' data-id='{{item.id}}' data-gname='{{item.name}}'>{{item.name}}</view>
+            </block>
+            <!-- </scroll-view> -->
+        </view>
+    </block>
+    <!-- 具体 完  -->
+
+    <!--商品  -->
+    <view class="group_class" style="width: 100%;height:{{px2rpxHeight*690}}px;">
+        <block wx:if="{{shopinfo.length==0}}">
+            <view>
+                <image src='https://zuoanzac.oss-cn-beijing.aliyuncs.com/null.png' class='bj' style="width:{{px2rpxWidth*755}}px;height:{{px2rpxHeight*700}}px;"></image>
+            </view>
+        </block>
+        <block wx:else>
+            <scroll-view scroll-y="true" style='width:100%;;height:100%' bindscrolltolower='scrollToLower'>
+                <view class="goods-list">
+                    <view class="goods-info" style="width: {{px2rpxWidth*345}}px;height:{{px2rpxHeight*430}}px;" catchtap='shopinfo' wx:for="{{shopinfo}}" wx:for-item="shop" wx:key="{{index}}" data-id='{{shop.id}}'>
+                        <view class="goods-img">
+                            <image src='{{serverUrl+shop.img}}' style="width:{{px2rpxWidth*313}}px;height:{{px2rpxHeight*244}}px;"></image>
+                        </view>
+                        <view class="goods-name">{{shop.gname}}</view>
+                        <view class="sell">已售:{{shop.saleCount}}</view>
+                        <view class="price-cart">
+                            <view class="member-price" style="width:{{px2rpxWidth*110}}px;height: {{px2rpxHeight*45}}px;">¥{{shop.goodsPrice}}</view>
+                            <view class='costprice' style="width:{{px2rpxWidth*110}}px;height:{{px2rpxHeight*45}}px;">￥{{shop.oriPrice}}</view>
+                            <!-- <image style="width:{{px2rpxWidth*70}}px; height:{{px2rpxHeight*44}}px;" src='../../images/cart2.png'></image> -->
+                        </view>
+                    </view>
+                    <view class="goods-info" style="width: {{px2rpxWidth*345}}px;height:{{px2rpxHeight*430}}px; opacity: 0;" ></view>
+                </view>
+            </scroll-view>
+        </block>
+    </view>
+    <!--商品完  -->
+</view>
+
+<import src="../../template/template.wxml" />
+<template is="tabBar" data="{{tabBar:bindData.tabBar}}" />

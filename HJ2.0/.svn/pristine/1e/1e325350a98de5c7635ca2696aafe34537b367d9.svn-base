@@ -1,0 +1,30 @@
+<!-- <view>
+    <image class="adv" src="../../images/goods_competitive.png"></image>
+</view> -->
+<view class="hot-selling">
+  <view class="goods-seckill" style='width:100%;height:{{1210*px2rpxHeight}}px'>
+    <scroll-view scroll-y="true" bindscrolltolower="scrolltolower" style='width:100%;;height:100%'>
+      <!-- <view class="goods-list"> -->
+      <block wx:if="{{stock==''}}">
+        <view class="hidden">您还没有库存</view>
+      </block>
+      <block wx:else>
+        <block wx:for="{{stock}}" wx:key="{{item.gId}}">
+          <view class="goods-info" style="width:{{px2rpxWidth*345}}px;height:{{px2rpxHeight*500}}px;" catchtap='info'>
+            <view bindtap='stockDetail' data-gid='{{item.gId}}' class="goods-img ">
+              <image src='{{serverUrl+item.img}}' style="width:{{px2rpxWidth*300}}px;height:{{px2rpxHeight*310}}px; "></image>
+            </view>
+            <view class="goods-name ">{{item.gname}}</view>
+            <!-- <view style='font-size:26rpx;color:#999;margin:12rpx 0 0 20rpx;'>持有量:{{item.possession}}</view> -->
+            <view class="price-cart ">
+              <view class="maichujia ">¥{{item.price}}</view>
+              <!-- <view class="huaxianjia ">¥79.00</view> -->
+            </view>
+          </view>
+        </block>
+      </block>
+
+
+    </scroll-view>
+  </view>
+</view>

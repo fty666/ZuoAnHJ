@@ -1,0 +1,197 @@
+/* pages/trader/index/index.wxss */
+
+/*搜索框样式  */
+
+.search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.bj {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.search .form {
+    margin-top: -250rpx;
+    background: white;
+    border-radius: 30rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search .input {
+    /* margin-left: 10rpx; */
+    color: #959698;
+}
+.sha {
+    position: absolute;
+    top: 100rpx;
+    left: 8rpx;
+}
+
+/*国家图标  */
+
+.xh {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 30rpx 0rpx;
+}
+
+.guojia {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    margin:20rpx 0;
+
+}
+
+.tubiao {
+    border-radius: 50%;
+    margin-left: 15rpx;
+}
+
+.zi {
+    font-size: 25rpx;
+    /* width: 100rpx; */
+    text-align: center
+}
+
+/*商品图片  */
+
+.content {
+    background: #ddd;
+}
+
+.c1 {
+    float: left;
+}
+
+.cc {
+    float: left;
+}
+
+.c4 {
+    width: 15%;
+    float: left;
+}
+
+/*相关推荐  */
+
+.zhenti {
+    width: 100%;
+    background: #fbfbfb;
+}
+
+.z2 {
+    margin-top: 22rpx;
+    border: 2rpx solid #f9e9f0;
+    box-shadow: 5rpx 5rpx 3rpx #f9e9f0;
+    float: left;
+}
+
+.name {
+    font-weight: bold;
+    font-size: 30rpx;
+    margin-top: 10rpx;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.miaosu {
+    margin-top: 12rpx;
+    font-size: 25rpx;
+    color: #959698;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.price {
+    margin-left: 40rpx;
+    margin-top: 15rpx;
+    font-size: 30rpx;
+    color: #ce0006;
+}
+
+.authorize-contianer {
+    background: #fff;
+    text-align: center;
+    margin-top: 300rpx;
+}
+
+.authorize-icon {
+    display: block;
+    margin: 0 auto;
+    padding-bottom: 10rpx;
+}
+
+.auth-item {
+    padding: 15rpx 0;
+}
+
+.btn-authorize {
+    margin: 100rpx 50rpx;
+}
+
+/*定位  */
+
+.rel {
+    position: relative;
+}
+
+.abs {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 99999999;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.member-price {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    background: #d83030;
+    color: white;
+    font-size: 28rpx;
+    border: 1rpx solid red;
+}
+
+.costprice {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    background: white;
+    color: #ddd;
+    font-size: 28rpx;
+    text-decoration: line-through;
+    border: 1rpx solid red;
+}
+
+.sell {
+    /* margin-left: 30rpx; */
+    font-size: 28rpx;
+    color: red;
+    margin-top: 5rpx;
+}
+
+.plain {
+    border: none;
+    border-color: transparent;
+}
+
+.recomm{
+  width: 100%;
+  display: flex;
+   flex-wrap:wrap; 
+  justify-content:space-around;
+
+}

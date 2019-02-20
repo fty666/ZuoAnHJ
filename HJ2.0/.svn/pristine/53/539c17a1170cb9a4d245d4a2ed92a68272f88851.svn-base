@@ -1,0 +1,56 @@
+<view class="comment" style="height:{{px2rpxHeight*900}}px; ">
+  <view class="goods-info">
+    <view class="goods-img">
+      <image src="{{serverUrl+goodsInfo.img}}" style="width:{{px2rpxWidth*80}}px;height:{{px2rpxHeight*80}}px;"></image>
+    </view>
+    <view class="goods-name" style="width:{{px2rpxWidth*560}}px; ">
+      {{goodsInfo.gname}}
+    </view>
+  </view>
+  <!--商品评价  -->
+  <view class="mycomment">
+    <textarea bindblur="bindTextAreaBlur" auto-focus maxlength="-1" placeholder="宝贝满足你的需要吗?说说他有什么优点和不足的地方" style=" width:{{px2rpxWidth*710}}px;height:{{px2rpxHeight*200}}px;" placeholder-style="color:#bbb" />
+  </view>
+  <!--添加图片  -->
+  <view class="addimage">
+    <block wx:for="{{src}}" wx:key="{{index}}">
+      <view class="addimage-each" style="width:{{px2rpxWidth*130}}rpx;height:{{px2rpxHeight*130}}rpx;margin-left:85rpx;">
+        <image src="{{item}}" style="width:{{px2rpxWidth*130}}px;height:{{px2rpxHeight*130}}px;"></image>
+        <view catchtap='cancleImg' data-src='{{index}}' style="width: {{px2rpxWidth*40}}px;height:{{px2rpxHeight*40}}px;" class="cancle">X</view>
+      </view>
+    </block>
+    <image bindtap='addImg' style="width:{{px2rpxWidth*130}}px;height:{{px2rpxHeight*130}}px;margin-left:110rpx;" hidden="{{src.length >= 4 ? true : false}}" src="../../images/addimage.png"></image>
+  </view>
+
+
+  <!--物流评分  -->
+  <view>
+    <view style='font-size: 30rpx;margin-left:15rpx;'>物流评分</view>
+    <block wx:for="{{stars}}" wx:key="index">
+      <view style='margin-left:100rpx;'>
+        <image class="star-image" style="margin-left:{{item==0 ? '50': 40+(item*100) }}rpx; width:{{px2rpxWidth*80}}px;height:{{px2rpxHeight*80}}px;" src="{{logistics >item ?selectedSrc:normalSrc}}">
+          <view class="item" style="left:0rpx" data-key="{{item+1}}" bindtap="wuliusLeft"></view>
+          <view class="item" style="left:75rpx" data-key="{{item+1}}" bindtap="wuliuRight"></view>
+        </image>
+      </view>
+    </block>
+
+  </view>
+
+  <!--服务态度评分  -->
+  <view style='padding-top:100rpx;'>
+    <view style='font-size: 30rpx;margin-left:15rpx;'>服务态度评分</view>
+    <block wx:for="{{stars}}" wx:key="index">
+      <view style='margin-left:100rpx;'>
+        <image class="star2" style="margin-left:{{item==0 ? '50': 40+(item*100) }}rpx; width:{{px2rpxWidth*80}}px;height:{{px2rpxHeight*80}}px;" src="{{qos >item ?selectedSrc:normalSrc}}">
+          <view class="item" style="left:0rpx" data-key="{{item+1}}" bindtap="qosLeft"></view>
+          <view class="item" style="left:75rpx" data-key="{{item+1}}" bindtap="qosRight"></view>
+        </image>
+      </view>
+    </block>
+  </view>
+
+  <view style="margin-top:220rpx;">
+    <button bindtap='publishComment' type='default'>确定</button>
+  </view>
+</view>

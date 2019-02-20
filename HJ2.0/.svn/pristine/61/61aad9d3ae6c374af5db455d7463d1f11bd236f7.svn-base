@@ -1,0 +1,50 @@
+<view>
+
+  <!--距离顶部  -->
+  <view class="padd"></view>
+
+  <block wx:if="{{sell==''}}">
+    <view class='none'>您还没有正在销售的商品</view>
+  </block>
+  <block wx:else>
+    <!--循环出  -->
+    <view wx:for="{{sell}}" wx:key="{{item.id}}">
+
+      <view style='height:220rpx;'>
+        <!--图片  -->
+        <navigator url=''>
+          <view class='picture'>
+            <image src="{{serverUrl+item.img}}" class='picture' style='width:{{px2rpxHeight*160}}px;height:{{px2rpxHeight*160}}px;'></image>
+          </view>
+        </navigator>
+
+        <!--内容  -->
+        <view calss="content" style='height:{{px2rpxHeight*200}}px;'>
+          <view class="name"> {{item.goodsName}}</view>
+          <view class="price" style='height:{{px2rpxHeight*60}}px;'> 售价:¥{{item.price}}
+            <view class="number" style='width:300rpx;' hidden='{{item.selected}}'>
+              <view class="jian" bindtap="minusCount" data-index="{{index}}">-</view>
+              <view class="num">
+                <input bindinput='inputNum' bindblur='blurNum' bindconfirm='blurNum' value="{{item.soldnum}}" data-index="{{index}}" type="number" />
+              </view>
+              <view class="jia" bindtap="addCount" data-index="{{index}}">+</view>
+            </view>
+            <view class='xiajia' style='width:{{px2rpxHeight*80}}px;height:{{px2rpxHeight*40}} px;' catchtap='undercarriage' data-dealerCode='{{item.dealerCode}}' data-goodsId='{{item.goodsId}}' data-index='{{index}}'>下架</view>
+            <!-- <view class='xiajia' hidden='{{!item.selected}}' catchtap='undercarriage' data-index='{{index}}'>下架</view> -->
+            <!-- <view hidden='{{item.selected}}' data-index="{{index}}" data-sid="{{item.dealer.sid}}" class='xiajia' catchtap='confirmUndercarriage'>确定</view>
+                        <view hidden='{{item.selected}}' class='xiajia' catchtap='cancleUndercarriage' data-index='{{index}}'>取消</view> -->
+          </view>
+          <view class="text">
+            <view class='info'>销售中:{{item.num}}</view>
+            <!-- <view class='info'>已售:{{item.saleNum.num}}</view> -->
+            <view class='info'>库存:{{item.stock}}</view>
+          </view>
+        </view>
+
+        <!--下划线  -->
+        <view class="xia"></view>
+      </view>
+
+    </view>
+  </block>
+</view>

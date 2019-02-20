@@ -1,0 +1,172 @@
+<view style="margin-top:20rpx;">
+  <view class="consignee" style=" width: 100%;height:{{px2rpxHeight*170}}px;">
+    <view class="consignee-font1">收货人： {{address.receiveName}}
+      <text style='margin-left:80rpx;'>{{address.phone}}</text> </view>
+    <view class="consignee-font2">{{address.addrCity}} {{address.addrDetail}}</view>
+    <view bindtap='selectAddress' class="consignee-img">
+      <image src="../../images/fanhui.png" style=" width:{{px2rpxWidth*25}}px;height:{{px2rpxWidth*40}}px;" />
+    </view>
+  </view>
+
+  <view style="width:100%;height:{{900*px2rpxHeight}}px">
+    <scroll-view scroll-y style="height: 100%;width:100%;">
+      <view style="margin-top:20rpx;">
+        <view sytle="width:100%;background-color:#fff;">
+          <block wx:for="{{commit_order.goodsInfo || commit_order.goods}}" wx:for-item="goods" wx:key="{{goods.cid}}">
+            <view class="myorder_each">
+              <view class="goods-info" style="width: 100%;height:{{px2rpxHeight*160}}px;">
+                <view class="goods-img">
+                  <block wx:if="{{shows==1}}">
+                    <image src="{{serverUrl+goods.img }}" style="width:{{px2rpxWidth*120}}px;height:{{px2rpxHeight*120}}px;"></image>
+                  </block>
+                  <block wx:if="{{shows==2}}">
+                    <image src="{{serverUrl+goods.goodsImg}}" style="width:{{px2rpxWidth*120}}px;height:{{px2rpxHeight*120}}px;"></image>
+                  </block>
+                </view>
+                <view class="goods-name">
+                  <view style="width:{{px2rpxWidth*400}}px;height:{{px2rpxHeight*100}} px;">
+                    {{goods.name || goods.goodsName}}
+                  </view>
+                </view>
+                <view class="goods-price" style="width:{{px2rpxWidth*200}}px;height:{{px2rpxHeight*150}}px;">
+                  <block wx:if="{{goods.num>=(goods.goods.dealerTerm || goods.dealerTerm) && (goods.status==1 ||commit_order.isDealer==1 )}}">
+                    <view class="buy-price"> 经销价：¥{{goods.dealerPrice}}{{goods.goods.dealerPrice}}</view>
+                    <view class="huaxian-price">￥
+                      <block wx:if="{{goods.price}}">
+                        {{goods.price}}
+                      </block>
+                      <block wx:else>
+                        {{goods.goods.dealerPrice}}
+                      </block>
+                    </view>
+                  </block>
+                  <block wx:else>
+                    <view class="buy-price">¥{{goods.price}}</view>
+                  </block>
+
+                  <!-- <view style='display:flex;'> -->
+                  <view class="buy-number">x{{goods.num || goods.num+goods.ZiTiNum}}</view>
+                  <!--折扣价  -->
+                  <block wx:if="{{goods.discount}}">
+                    <view class="discounts">用户享受{{goods.discount}}折优惠</view>
+                  </block>
+                  <!-- </view> -->
+
+                </view>
+              </view>
+            </view>
+          </block>
+        </view>
+      </view>
+
+      <view class="invoice-information" style="width: 100%;height:{{px2rpxHeight*80}}px;">
+        支付方式
+        <input bindblur='receiptInfo' type='text' disabled="true" value='只支持在线支付'></input>
+      </view>
+
+      <view class="invoice-information">
+        是否需要发票
+        <view style='margin-left:405rpx;'>
+          <switch bindchange="switch2" />
+        </view>
+      </view>
+
+      <block wx:if="{{bill==true}}">
+        <!-- <form> -->
+        <view class='from' style="height:{{px2rpxHeight*920}}px">
+          <view class='infos'>请选择填写发票信息</view>
+          <view class='type'>发票类型</view>
+          <view class='select'>
+            <radio-group class="radio-group" bindchange="types">
+              <label class="select2">
+                <radio value='1'>电子普通发票</radio>
+              </label>
+              <label class="select2">
+                <radio value='2'>增值税普通发票</radio>
+              </label>
+            </radio-group>
+          </view>
+
+          <view class='type'>发票抬头</view>
+          <view class='select'>
+            <radio-group class="radio-group" bindchange="heads">
+              <label class="select2">
+                <radio value='1'>个人</radio>
+              </label>
+              <label class="select2">
+                <radio value='2'>单位</radio>
+              </label>
+            </radio-group>
+          </view>
+          <block wx:if="{{shops==true}}">
+            <view class=''>
+              <input bindblur='units' class='wall' placeholder="请填写单位名称"></input>
+            </view>
+
+            <view class='payer'>
+              <input bindblur='payer' class='wall' placeholder="请填写纳税人识别号"></input>
+            </view>
+          </block>
+
+          <view class='type'>商品明细</view>
+          <view class='select'>
+            <radio-group class="radio-group" bindchange="details">
+              <label class="select2">
+                <radio value='1'>商品明细</radio>
+              </label>
+              <label class="select2">
+                <radio value='2'>商品类别</radio>
+              </label>
+            </radio-group>
+          </view>
+
+          <view class='type'>收票人手机:
+            <view>
+              <input class='wall2' bindblur='mobile'></input>
+            </view>
+          </view>
+          <view class='tel'></view>
+          <view class='type'>
+            收票人邮箱:
+            <view>
+              <input class='wall2' bindblur='email'></input>
+            </view>
+          </view>
+          <view class='tel'></view>
+        </view>
+        <!-- </form> -->
+      </block>
+
+      <view class="goods-total">
+        <view class="goods-total-font1">商品总价</view>
+        <view class="goods-total-font2">¥{{commit_order.soldPrice || commit_order.money ||commit_order.moneys }}</view>
+        <!-- <view class="goods-total-font2">¥998</view> -->
+      </view>
+      <view class="goods-total" style='margin-top:0;'>
+        <view class="goods-total-font1">运费</view>
+        <view class="goods-total-font2">¥{{franking}}</view>
+      </view>
+    </scroll-view>
+  </view>
+  <view class="qurenziti" style="width: 100%;height: {{px2rpxHeight*98}}px;top:{{px2rpxHeight*1082}}px;">
+    <view class="qurenziti-font" style=" width:{{px2rpxWidth*450}}px;height:{{px2rpxHeight*98}}px;">总计
+      <text> ¥{{summoney}}</text>
+    </view>
+    <block wx:if="{{commit_order.orderNum}}">
+      <view bindtap='payOrder' class="qurenziti-btn" style="width:{{px2rpxWidth*300}}px;height:{{px2rpxHeight*98}}px;">支付</view>
+    </block>
+    <block wx:else>
+      <view bindtap='commitOrder' class="qurenziti-btn" style="width:{{px2rpxWidth*300}}px;height:{{px2rpxHeight*98}}px;">提交订单</view>
+    </block>
+    <!-- <view>
+            <image src='https://zuoanzac.oss-cn-beijing.aliyuncs.com/bj.png' style='width:100%;height:{{px2rpxWidth*200*2}}rpx;'></image>
+        </view> -->
+  </view>
+
+</view>
+
+<!--输入支付密码 start  -->
+<view class="payment" hidden='{{enterPaymentPassword}}'>
+
+</view>
+<!--输入支付密码 end  -->
