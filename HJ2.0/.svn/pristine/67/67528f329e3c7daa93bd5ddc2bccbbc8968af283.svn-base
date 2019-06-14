@@ -1,5 +1,0 @@
-<!--pages/trader/auditor/auditor.wxml-->
-<view>
-    <view class='font'>请耐心等待.......</view>
-    <view><image src='../../../images/auditing.png' class='img'></image></view>
-</view>
