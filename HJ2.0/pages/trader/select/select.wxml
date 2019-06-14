@@ -1,0 +1,31 @@
+<view style='display:flex;'>
+  <view class='show'>请选择想要售卖的酒</view>
+  <view style='margin-left:20rpx;'>
+    <button catchtap='align' class='butt' style='width: {{px2rpxHeight*150}}px;height:{{px2rpxHeight*65}}px;' type='primary'>换一批</button>
+  </view>
+</view>
+
+<view>
+  <image src='../../../images/line.png' style='width:100%;height:40rpx;'></image>
+</view>
+<view>
+  <form bindsubmit="formSubmit">
+    <checkbox-group bindchange="checkboxChange">
+      <label wx:for="{{drink}}" wx:key="{{index}}">
+        <checkbox class="select" name="drinks" checked='{{item.checked}}' value="{{item.id}}" style='height: {{px2rpxHeight*200}}px;'>
+          <view style='display:flex;'>
+            <view>
+              <image class='img' style='width:{{px2rpxHeight*200}}px;height:{{px2rpxHeight*200}}px;' src='{{serverUrl+item.img}}'></image>
+            </view>
+            <view style='flex-direction:row-reverse;'>
+              <view class='name' style='margin-left:30rpx;'>{{item.name}}</view>
+              <view class='guige'>{{item.specification}}</view>
+            </view>
+          </view>
+        </checkbox>
+        <view class='xia'></view>
+      </label>
+    </checkbox-group>
+    <button formType="submit" type="warn" class='put'>提交</button>
+  </form>
+</view>

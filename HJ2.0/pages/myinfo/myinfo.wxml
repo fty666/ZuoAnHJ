@@ -1,0 +1,134 @@
+<view>
+  <!--顶部头像  -->
+  <view style="display:flex;background-image:url(' https://zuoanzac.oss-cn-beijing.aliyuncs.com/userBj.png ');height:{{300*px2rpxHeight}}px;width:100%;">
+    <view class='profile ' style='height:{{px2rpxHeight*240}}px;width:{{px2rpxHeight*240}}px;padding-top:{{px2rpxHeight*50}}px;border-radius:50%; '>
+      <navigator url="../users/users/users">
+        <block wx:if="{{userInfo.photo.length<23}}">
+          <image src="{{serverUrl+userInfo.photo}}" class='image ' style="width: {{px2rpxWidth*163}}px;height: {{px2rpxWidth*163}}px;"></image>
+        </block>
+        <block wx:else>
+          <image src="{{userInfo.photo}}" class='image ' style="width: {{px2rpxWidth*163}}px;height: {{px2rpxWidth*163}}px;"></image>
+        </block>
+      </navigator>
+    </view>
+    <view style='line-height:{{px2rpxHeight*250}}px; '>{{userInfo.nickName}}</view>
+  </view>
+
+  <!--我的订单  -->
+  <view class="myorder">
+    <view class="myorder-font" style="width: 100%;height: {{px2rpxHeight*75}}px;">
+      <view class="myorder-font-1">我的订单</view>
+      <navigator url="/pages/myorder/myorder?dealerCode={{userInfo.dealerCode}}">
+        <view class="myorder-font-2">查看全部订单 〉</view>
+      </navigator>
+    </view>
+    <view class="line" style="width: 93%;height:{{px2rpxHeight*2}}px;"></view>
+    <view class="four-wait" style='display:flex;flex-wrap:wrap '>
+      <view class="four-wait-each" style="width:{{px2rpxWidth*178}}px;height:{{px2rpxHeight*100}}px;">
+        <navigator url="/pages/myorder/myorder?status={{pending_payment}}">
+          <view>
+            <image src="https://zuoanzac.oss-cn-beijing.aliyuncs.com/DFK.png" style="width:{{px2rpxWidth*50}}px;height:{{px2rpxWidth*50}}px;"></image>
+          </view>
+          <view class="four-wait-each-font">待付款</view>
+        </navigator>
+      </view>
+
+      <view class="four-wait-each" style="width:{{px2rpxWidth*178}}px;height:{{px2rpxWidth*100}}px;">
+        <navigator url="/pages/myorder/myorder?status={{to_be_shipped}}">
+          <view>
+            <image src="https://zuoanzac.oss-cn-beijing.aliyuncs.com/DFH.png" style="width:{{px2rpxWidth*50}}px;height:{{px2rpxHeight*50}}px;"></image>
+          </view>
+          <view class="four-wait-each-font">待发货</view>
+        </navigator>
+      </view>
+
+      <view class="four-wait-each" style="width:{{px2rpxWidth*178}}px;height:{{px2rpxWidth*100}}px;">
+        <navigator url="/pages/myorder/myorder?status={{to_be_received}}">
+          <view>
+            <image src="https://zuoanzac.oss-cn-beijing.aliyuncs.com/DSH.png" style="width:{{px2rpxWidth*50}}px;height:{{px2rpxHeight*50}}px;"></image>
+          </view>
+          <view class="four-wait-each-font">待收货</view>
+        </navigator>
+      </view>
+
+      <!--待评价  -->
+      <view class="four-wait-each" style="width:{{px2rpxWidth*178}}px;height:{{px2rpxWidth*100}}px;">
+        <navigator url="/pages/myorder/myorder?status={{to_be_evaluated}}">
+          <view>
+            <image src="https://zuoanzac.oss-cn-beijing.aliyuncs.com/PJ.png" style="width:{{px2rpxWidth*50}}px;height:{{px2rpxHeight*50}}px;"></image>
+          </view>
+          <view class="four-wait-each-font">待评价</view>
+        </navigator>
+      </view>
+
+      <!--收货地址  -->
+      <view class="four-wait-each" style="width:{{px2rpxWidth*178}}px;height:{{px2rpxWidth*100}}px;" catchtap='guanli'>
+        <view>
+          <image src="https://zuoanzac.oss-cn-beijing.aliyuncs.com/ADD.png" style="width:{{px2rpxWidth*50}}px;height:{{px2rpxHeight*50}}px;"></image>
+        </view>
+        <view class="four-wait-each-font">地址</view>
+      </view>
+
+      <!--收藏  -->
+      <view class="four-wait-each" style="width:{{px2rpxWidth*178}}px;height:{{px2rpxWidth*100}}px;" catchtap='collects'>
+        <view>
+          <image src="https://zuoanzac.oss-cn-beijing.aliyuncs.com/SC.png" style="width:{{px2rpxWidth*50}}px;height:{{px2rpxHeight*50}}px;"></image>
+        </view>
+        <view class="four-wait-each-font">收藏</view>
+      </view>
+
+      <!--客服  -->
+      <navigator url='/pages/kefu/kefu'>
+        <view class="four-wait-each" style="width:{{px2rpxWidth*178}}px;height:{{px2rpxWidth*100}}px;">
+          <view>
+            <image src="https://zuoanzac.oss-cn-beijing.aliyuncs.com/KF.png" style="width:{{px2rpxWidth*50}}px;height:{{px2rpxHeight*50}}px;"></image>
+          </view>
+          <view class="four-wait-each-font">客服</view>
+        </view>
+      </navigator>
+
+      <!--优惠券  -->
+      <navigator url='/pages/coupon/coupon'>
+        <view class="four-wait-each" style="width:{{px2rpxWidth*178}}px;height:{{px2rpxWidth*100}}px;">
+          <view>
+            <image src="../../images/yhq.png" style="width:{{px2rpxWidth*50}}px;height:{{px2rpxHeight*50}}px;"></image>
+          </view>
+          <view class="four-wait-each-font">优惠券</view>
+        </view>
+      </navigator>
+
+    </view>
+  </view>
+
+  <view style='height:{{px2rpxHeight*400}}px;width:100%; '>
+    <!-- <scroll-view scroll-y style="height: 100%"> -->
+      <view class="jianju" style="background-color:#eee;margin-top:20rpx;height:20rpx;"></view>
+      <!--商品列表  -->
+      <view>
+        <navigator url="/pages/goods_detail/goods_detail?id={{Tid}}">
+          <view style='height:{{px2rpxHeight*100}}px;text-align:center;line-height:90rpx;font-size:30rpx; '>精品推荐</view>
+        </navigator>
+        <view style='display:flex;margin-left:{{px2rpxWidth*5}}px; '>
+          <block wx:for="{{cakes}}" wx:key="{{index}}">
+            <navigator url="/pages/goods_detail/goods_detail?id={{item.id}}">
+              <view style='margin-left:{{px2rpxWidth*6}}px; '>
+                <image src='{{serverUrl+item.img}} ' style='width:{{px2rpxWidth*350}}rpx;height:{{px2rpxWidth*500}}rpx;margin-left:{{px2rpxWidth*5}}px; '></image>
+                <view style='color:white;background:black;opacity: 0.5;width:{{px2rpxWidth*350}}rpx;height:{{px2rpxWidth*100}}rpx;margin-left:{{px2rpxWidth*5}}px;text-align:center;margin-top:-50rpx; '>￥{{item.price}}</view>
+              </view>
+            </navigator>
+          </block>
+        </view>
+      </view>
+
+      <!-- <view class="bottom" style='margin-bottom:98rpx; '>
+        <view class="bottom-ad" style='height:{{px2rpxHeight*450}}rpx; '>
+          <image src="https://zuoanzac.oss-cn-beijing.aliyuncs.com/buy.png" style="width:{{px2rpxWidth*710}}px;height:{{px2rpxHeight*180}}px;margin-top:{{px2rpxHeight*17}}px;" catchtap='buy'></image>
+        </view>
+      </view> -->
+    <!-- </scroll-view> -->
+  </view>
+
+
+  <import src="../../template/template.wxml" />
+  <template is="tabBar" data="{{tabBar:bindData.tabBar}}" />
+</view>

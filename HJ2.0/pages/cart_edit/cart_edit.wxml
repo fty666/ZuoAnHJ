@@ -1,0 +1,10 @@
+<view>
+    <view class="edit">完成</view>    
+    <view>
+        <view class="checkbox">
+            <checkbox checked='{{item.selected}}' bindtap="selectList" data-index="{{index}}" />店铺名称
+        </view>
+        
+    </view>
+</view>
+

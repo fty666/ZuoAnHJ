@@ -1,0 +1,98 @@
+/* 背景图片 */
+.beijin{
+  background:url(../../../images/bjlogin.png);
+  background-size:400rpx 800rpx;
+  background-repeat:no-repeat;
+}
+
+/*登录  */
+.den{
+  width:189rpx;
+  height:121rpx;
+  margin-left: 230rpx;
+  margin-top: 150rpx;
+  position: relative;
+  float: left;
+  z-index: 99999;
+}
+
+/*注册  */
+.ce{
+  width: 189rpx;
+  height: 121rpx;
+  margin-left:-50rpx;
+  margin-top: 150rpx;
+  position: relative;
+  float: left;
+  z-index: 9;
+}
+
+/*输入框  */
+.from{
+  width: 540rpx;
+  height: 236rpx;
+  margin-top:122rpx; 
+  margin-left: 120rpx;
+  background: #f2f2f2;
+  border-radius: 20rpx;
+}
+/*下划线  */
+.xia{
+  height: 5rpx;
+  background: #999999;
+  width:90%;
+  margin-left: 30rpx;
+  margin-top: 10rpx;
+}
+/*登录头像  */
+.tou{
+  margin-top:20rpx;
+  margin-left:12rpx;
+  width: 60rpx;
+  height: 60rpx;
+}
+/*输入框信息  */
+.phone{
+  display: flex;
+  justify-content: flex-start;
+}
+.text{
+  margin-top: 20rpx;
+  color: #999999;
+  margin-left:30rpx;
+  font-size: 24rpx;
+}
+
+.eye{
+  margin-top:20rpx;
+  width: 60rpx;
+  height: 40rpx;
+  margin-left: 65rpx;
+}
+
+/*立即登录  */
+.denlu{
+  width: 550rpx;
+  height: 82rpx;
+  margin-top: 150rpx;
+}
+/*体验一下  */
+.tiyan{
+  height: 100rpx;
+  width: 352rpx;
+  margin-top: 80rpx;
+  margin-left: 80rpx;
+}
+
+/*第三方登录  */
+.san{
+  margin-top: 80rpx;
+  margin-left: 180rpx;
+}
+
+.tubiao{
+  width: 70rpx;
+  height: 70rpx;
+  margin-top: 40rpx;
+  margin-left: 70rpx;
+}

@@ -1,0 +1,23 @@
+<view>
+    <image class="adv" src="../../images/goods_competitive.png"></image>
+</view>
+<view class="hot-selling">
+    <view class="rexiao">热销榜</view>
+    <view class="goods-seckill">
+        <scroll-view scroll-y="true" style='width:100%;;height:100%'>
+            <view class="goods-list">
+                <view class="goods-info" catchtap='info' wx:for="{{[1,2,3,4,5,6]}}">
+                    <view class="goods-img">
+                        <image src='../../images/hongjiu.png'></image>
+                    </view>
+                    <view class="goods-name">路易拉菲2009男爵古堡干红葡萄酒</view>
+                    <view class="price-cart">
+                        <view style='color:#ec2525'><text style='font-size:25rpx;'>¥</text><text style='font-size:40rpx;'>39.00</text></view>
+                        <view style="font-size:20rpx;color:#c0c0c0;margin-left:-13rpx;padding-top:10rpx;box-sizing:border-box;">¥79.00</view>
+                        <image style="width:70rpx; height: 44rpx;" src='../../images/cart2.png' ></image>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+</view>

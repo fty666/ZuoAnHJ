@@ -1,0 +1,26 @@
+<view>
+    <!--图片  -->
+    <view>
+        <image src="../../../images/1.png" style='width:800rpx;height:340rpx;'></image>
+    </view>
+
+    <!--文字  -->
+    <view class="text">
+        <view style="text-align:center;line-height:80rpx;">经销商规则</view>
+        <text decode="{{true}}" space="{{true}}" style='font-size:30rpx;'> &nbsp;酒仙网会员体系是处于不同成长阶段&nbsp;的酒仙网会员提供不同的更省钱，更尊贵，更贴心，更强大和更快捷的服务体系，&nbsp;会员体系以会员在酒仙网有效积累消费金额为标准，会员级&nbsp;别越高，享受的会员服务也越多！
+       &nbsp;（1）客户收货确认2天后即记录消费金额，累计金额达到会员等级变化的额度即发生会员等级变化。
+       &nbsp;（2）若有退换货导致消费金额降至下个会员等级范围，会员等级之将低。</text>
+    </view>
+    <!--申请开通  -->
+    <view class='put'>
+        <checkbox-group bindchange="checkboxChange">
+            <label class="checkbox">
+                <checkbox checked="" value='true' />已经阅读经销商规则
+            </label>
+        </checkbox-group>
+    </view>
+    <view class="kai">
+        <button type='warn' catchtap='kai' form-type="submit">申请开通</button>
+    </view>
+
+</view>

@@ -1,0 +1,32 @@
+<view class="lianxikefu" style='margin-top:20rpx;'>
+  <image src='https://zuoanzac.oss-cn-beijing.aliyuncs.com/LYB.png' style='width:{{px2rpxWidth*50}}px;height:{{px2rpxWidth*50}}px'></image>
+  <text style='margin-left:20rpx;'> 用户留言</text>
+</view>
+<!--退换货原因  -->
+<form bindsubmit="formSubmit">
+  <view class='tui' style='height:300rpx;'>
+    <textarea name="content" placeholder="提供您的订单号、联系方式，方便为您提供优质客服服务" placeholder-style="height:180rpx;" class='textarea-inherit' name="content"  />
+  </view>
+
+  <view class="addimage" style='background:white;z-index:99999;'>
+    <block wx:for="{{src}}" wx:key="{{index}}">
+      <view class="addimage-each" style="width:{{px2rpxWidth*144}}px;height:{{px2rpxHeight*130}}px;margin-left:20rpx;">
+        <image src="{{serverUrl+item}}" style="width:{{px2rpxWidth*130}}px;height:{{px2rpxHeight*130}}px;"></image>
+        <view catchtap='cancleImg' data-src='{{index}}' style="width: {{px2rpxWidth*40}}px;height:{{px2rpxHeight*40}}px;" class="cancle">X</view>
+      </view>
+    </block>
+    <image catchtap='addImg' style="width:{{px2rpxWidth*130}}px;height:{{px2rpxHeight*130}}px;margin-left:20rpx;" hidden="{{src.length >= 4 ? true : false}}" src="../../images/addimage.png"></image>
+  </view>
+
+  <view class="lianxikefu" catchtap='custom'>
+    <image src="https://zuoanzac.oss-cn-beijing.aliyuncs.com/kefu.png"></image>
+    <view class="lianxikefu-font">
+      <view class="lianxikefu-font1">联系客服</view>
+      <view class="lianxikefu-font2">联系客服为您提供贴心服务(9:00-21:00)</view>
+    </view>
+  </view>
+  <view style='border:3rpx solid #ddd'></view>
+  <view style='margin-top:20rpx;'>
+    <button type='warn' form-type="submit">确认提交</button>
+  </view>
+</form>

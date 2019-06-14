@@ -1,0 +1,326 @@
+page {
+    background-color: #eee;
+}
+
+.consignee {
+    position: relative;
+    padding: 32rpx 20rpx;
+    box-sizing: border-box;
+    font-size: 30rpx;
+    color: #333;
+    background-color: #fff;
+    /* border:1px solid red;f  */
+}
+
+.consignee .consignee-font2 {
+    margin-top: 30rpx;
+    font-size: 25rpx;
+    color: #aaa;
+}
+
+.consignee .consignee-img {
+    position: absolute;
+    top: 40%;
+    left: 95%;
+}
+/* 
+.consignee .consignee-img image {
+
+} */
+
+.myorder_each {
+    /* height: 220rpx;  */
+    background-color: #fff;
+}
+
+.goods-info {
+    position: relative;
+    border-bottom: 1rpx solid #eee;
+}
+
+.goods-info view {
+    position: absolute;
+}
+
+.goods-info .goods-img {
+    top: 20rpx;
+    left: 20rpx;
+}
+
+/* .goods-info .goods-img image {
+
+} */
+
+.goods-info .goods-name {
+    position: absolute;
+    top: 33rpx;
+    left: 170rpx;
+    font-size: 24rpx;
+    color: #333;
+    /* border: 1px solid red;  */
+}
+
+.goods-price {
+    position: absolute;
+    top: 30rpx;
+    right: 20rpx;
+    font-size: 24rpx;
+    color: #ed0000;
+    /* border: 1px solid red;  */
+}
+
+.goods-price .buy-price {
+    position: absolute;
+    right: 0;
+    color: red;
+}
+
+.goods-price .huaxian-price {
+    position: absolute;
+    top: 40rpx;
+    right: 0;
+    text-decoration: line-through;
+    font-size: 25rpx;
+    color: #aaa;
+}
+
+.goods-price .buy-number {
+    top: 75rpx;
+    right: 0;
+    font-size: 24rpx;
+    color: black;
+}
+
+.order-summary {
+    width: 100%;
+    height: 80rpx;
+    margin-top: -30rpx;
+    background-color: #fff;
+    padding-top: 25rpx;
+    padding-left: 225rpx;
+    box-sizing: border-box;
+    font-size: 30rpx;
+    /* border:1px solid red; */
+}
+
+.invoice-information {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 20rpx;
+    padding: 20rpx;
+    font-size: 30rpx;
+    color: #666;
+    line-height: 50rpx;
+    background-color: #fff;
+    /* border:1px solid red;  */
+}
+
+.invoice-information input {
+    margin-left: 30rpx;
+    width: 70%;
+    font-size: 25rpx;
+    color: #aaa;
+    /* border:1px solid red;  */
+}
+
+.remarks {
+    width: 100%;
+    margin-top: 20rpx;
+    padding: 20rpx;
+    background-color: #fff;
+}
+
+.remarks textarea {
+    width: 710rpx;
+    height: 160rpx;
+    border-radius: 15rpx;
+    font-size: 25rpx;
+    padding: 20rpx;
+    box-sizing: border-box;
+    border: 1px solid #aaa;
+}
+
+.goods-total {
+    margin-top: 20rpx;
+    padding: 20rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 30rpx;
+    color: #666;
+    background-color: #fff;
+    border-bottom: 1rpx solid #eee;
+}
+
+.goods-total-font2 {
+    font-size: 24rpx;
+    color: #ed0000;
+}
+
+.qurenziti {
+    position: fixed;
+    left: 0;
+    z-index: 999;
+    font-size: 36rpx;
+    background-color: #fff;
+}
+
+.qurenziti .qurenziti-font {
+    display: inline-block;
+    padding: 20rpx;
+    color: #333;
+    box-sizing: border-box;
+}
+
+.qurenziti .qurenziti-font text {
+    color: #ed0000;
+}
+
+.qurenziti .qurenziti-btn {
+    display: inline-block;
+    text-align: center;
+    line-height: 90rpx;
+    background-color: #ce000d;
+    color: #fff;
+}
+
+.payment {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 1210rpx;
+    background-color: #ccc;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+}
+
+.payment .pay-way {
+    display: flex;
+    flex-direction: column;
+    width: 665rpx;
+    height: 568rpx;
+    padding: 0 25rpx;
+    box-sizing: border-box;
+    background-color: #fff;
+    z-index: 99999;
+}
+
+.change-way {
+    width: 100%;
+    height: 109rpx;
+    /* text-align: left; */
+    line-height: 109rpx;
+    border-bottom: 3rpx solid #aaa;
+}
+
+.pay-way-each {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 112rpx;
+    padding-left: 52rpx;
+    box-sizing: border-box;
+    border-bottom: 1rpx solid #ddd;
+}
+
+.pay-way-each-a {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.pay-way-img {
+    width: 68rpx;
+    height: 68rpx;
+    /* border: 1px solid red; */
+}
+
+.pay-way-name {
+    margin-left: 9rpx;
+    font-size: 32rpx;
+    color: #333;
+}
+
+.add-pay {
+    width: 100%;
+    height: 112rpx;
+    padding-left: 52rpx;
+    box-sizing: border-box;
+    text-align: left;
+    line-height: 112rpx;
+}
+
+/*发票信息  */
+
+.from {
+    background: white;
+}
+
+.info {
+    font-size: 30rpx;
+    margin-left: 18rpx;
+    margin-top: 10rpx;
+}
+
+.infos{
+    font-size: 30rpx;
+    margin-left: 18rpx;
+    margin-top: 15rpx;
+    line-height: 88rpx;
+}
+
+.type {
+    font-size: 30rpx;
+    margin-left: 18rpx;
+    margin-top: 10rpx;
+    color: #666;
+}
+
+.select {
+    font-size: 25rpx;
+    margin-left: 20rpx;
+    color: #aaa;
+    margin-top: 10rpx;
+}
+
+.select2 {
+    width: 150rpx;
+    margin-left: 35rpx;
+}
+
+/* .tel{
+    width: 90%;
+    margin-left: 10rpx;
+} */
+
+.wall {
+    height: 70rpx;
+    width: 90%;
+    margin-left: 40rpx;
+    border-radius: 15rpx;
+    border: 1rpx solid #ccc;
+    margin-top: 15rpx;
+}
+
+.wall2 {
+    height: 65rpx;
+    width: 90%;
+    margin-left: 20rpx;
+    border-radius: 15rpx;
+    border: 1rpx solid #ccc;
+    margin-top: 15rpx;
+}
+
+.discounts{
+    width: 200rpx;
+    color: #ddd;
+    margin-left: 22rpx;
+    margin-top: 40rpx;
+}

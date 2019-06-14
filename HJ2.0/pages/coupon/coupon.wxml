@@ -1,0 +1,19 @@
+<view>
+  <view wx:if="{{counponList.length==0}}">
+    <view class='none' style='margin-top:{{px2rpxHeight*300}}px;'>您还没有可用的优惠券</view>
+  </view>
+  <view wx:else>
+    <block wx:for="{{counponList}}" wx:key="{{index}}">
+      <view class='flex' style='width:90%;height:{{px2rpxHeight*207}}px;background: url(https://zuoanzac.oss-cn-beijing.aliyuncs.com/YXyhq.png);background-repeat:no-repeat;width:100%;height:100px;background-size:100%' catchtap='byback' data-index='{{item}}'>
+        <view class='font1' style='margin:{{px2rpxHeight*80}}px {{px2rpxWidth*10}}px;' catchtap='byback2' data-index='{{item}}'>{{item.money}}元</view>
+        <view class='font2'>
+          <view class='font3' style='margin:{{px2rpxHeight*30}}px {{px2rpxWidth*90}}px;' catchtap='byback3' data-index='{{item}}'>
+            <b>通用券</b>
+          </view>
+          <view class='font4' style='margin-left:{{px2rpxWidth*90}}px;' catchtap='byback4' data-index='{{item}}'>有效期：{{item.start_time}}至{{item.end_time}}</view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+</view>

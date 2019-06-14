@@ -1,0 +1,157 @@
+<view class="four-btn" style=" width: 100%;height:{{px2rpxHeight*80}}px;">
+  <view bindtap='allOrders' data-mystatus="{{all_order}}" class="{{current_orderStatus == all_order ?  'clickbtn' : ''}}" style="width: {{px2rpxWidth*142}}px;height:{{px2rpxHeight*80}}px;">全部</view>
+  <view bindtap='toBeShipped' data-mystatus="{{to_be_shipped}}" class="{{current_orderStatus == to_be_shipped ? 'clickbtn': ''}}" style="width: {{px2rpxWidth*142}}px;height:{{px2rpxHeight*80}}px;">待发货</view>
+  <view bindtap='toBeReceived' data-mystatus="{{to_be_received}}" class="{{current_orderStatus == to_be_received ? 'clickbtn': ''}}" style="width: {{px2rpxWidth*142}}px;height:{{px2rpxHeight*80}}px;">待收货</view>
+  <view bindtap='toBeEvaluated' data-mystatus="{{to_be_evaluated}}" class="{{current_orderStatus == to_be_evaluated ? 'clickbtn': ''}}" style="width: {{px2rpxWidth*142}}px;height:{{px2rpxHeight*80}}px;">待评价</view>
+</view>
+<!--订单为空  -->
+<block wx:if="{{myorder==''}}">
+  <view class='fon1'>您还没有相关订单</view>
+</block>
+<block wx:else>
+  <scroll-view scroll-y style="width:100%;height:1120rpx;margin-top:5px;" bindscrolltoupper='scrollToLower'>
+    <view class="{{bj==2?'bj':'bj2'}}">
+      <!--循环订单  -->
+      <block wx:for="{{myorder}}" wx:key="{{item.uuid}}">
+        <view>
+          <view style="height:{{px2rpxHeight*15}}px;background:#ddd"></view>
+          <view class="{{bj==2?'create_time':'times'}}" catchtap='info' style='display:flex;' data-index='{{index}}'>
+            <view style='margin-left:{{px2rpxWidth*10}}px'>{{item.orderUUId}}</view>
+            <view style='margin-left:{{px2rpxWidth*150}}px'>{{item.createTime}}</view>
+          </view>
+        </view>
+
+        <!--订单商品循环  -->
+        <block wx:for="{{item.goods}}" wx:for-item="goods" wx:key="{{goods.goodsId}}">
+          <view sytle="width:100%;background-color:#fff;">
+            <!-- 订单商品 start  -->
+            <view class="{{bj==2?'myorder_each':'dealer'}}" style='border-bottom:2rpx solid white'>
+              <view class="goods-info" style="width: 100%;height:{{px2rpxHeight*154}}px; ">
+                <view class="goods-img" style="width:{{px2rpxWidth*142}}px;height: {{px2rpxHeight*142}}px;">
+                  <navigator url="/pages/goods_detail/goods_detail?id={{goods.goodsId}}">
+                    <image src="{{serverUrl + goods.goodsImg}}" style="width:{{px2rpxWidth*142}}px;height: {{px2rpxHeight*142}}px;"></image>
+                  </navigator>
+
+                </view>
+                <view class="goods-name" catchtap='info' data-index='{{index}}' style="width:{{px2rpxWidth*400}}px;height: {{px2rpxHeight*100}}px;">
+                  <view>
+                    {{goods.goodsName}}
+                  </view>
+                  <view class="guige">
+                    商品规格: {{goods.specification}}
+                  </view>
+                </view>
+                <view class="goods-price" style="width:{{px2rpxWidth*100}}px;height: {{px2rpxHeight*150}}px;">
+                  <view class="buy-price">¥{{goods.price}}</view>
+                  <view class="huaxian-price">
+                    <text style='color:red;'>{{goods.sta == 1 ? '自提':''}}</text>
+                  </view>
+                  <view class="buy-number">x{{goods.num}}</view>
+                </view>
+              </view>
+            </view>
+            <!-- <view style='border:2rpx solid white;'></view> -->
+          </view>
+        </block>
+
+        <!-- 订单状态 start  -->
+        <block wx:if="{{item.status==0}}">
+          <!-- <view style='border:5rpx solid white;'></view>  -->
+        </block>
+        <block wx:else>
+          <view class="order-btn">
+            <view class="order-status" wx:if="{{item.status == 1}}">卖家未发货</view>
+            <view class="order-status" wx:if="{{item.status == 2}}">卖家已发货</view>
+            <view class="order-status" wx:if="{{item.status == 6}}">退货中</view>
+            <view class="order-status" wx:if="{{item.status == 5}}">换货中</view>
+            <view class="order-status" wx:if="{{item.status == 4}}">交易成功</view>
+            <view class="order-status" wx:if="{{item.status == 8}}">换货已完成</view>
+            <view class="order-status" wx:if="{{item.status == 9}}">退货已完成</view>
+            <view class="order-status" wx:if="{{item.status == 99}}">经销商商品</view>
+            <view class="order-status" wx:if="{{item.status == remove}}">已取消订单</view>
+
+            <!--服务按钮 start  -->
+            <view class='show' wx:if="{{item.remind == 1 }}">
+              <view bindtap='reminderDelivery' data-orderid="{{item.orderUUId}}" class="order-btn2">提醒发货</view>
+            </view>
+
+            <view class='show' wx:if="{{item.status ==remove}}">
+              <view bindtap='del' data-index='{{index}}' data-status="-1" data-orderid="{{item.orderUUId}}" class="order-btn2">删除订单</view>
+            </view>
+
+            <view class='show' wx:if="{{item.status == to_be_received}}">
+              <!-- <view bindtap='checkLogistics' data-orderid="{{item.id}}" class="order-btn1"> -->
+              <view data-orderid="{{item.orderUUId}}" class="order-btn1">
+                <navigator url='/pages/express/express?uuid={{item.orderUUId}}'>查看物流</navigator>
+              </view>
+              <view bindtap='confirmReceipt' data-orderid="{{item.orderUUId}}" class="order-btn2">确认收货</view>
+            </view>
+
+            <view class='show' wx:if="{{item.status == to_be_evaluated }}">
+              <view bindtap='afterSaleBtn' data-orderid="{{item.orderUUId}}" data-index="{{index}}" class="order-btn1">
+                申请售后
+              </view>
+              <view bindtap='insertCommentBtn' data-index="{{index}}" data-uuid="{{item.orderUUId}}" class="order-btn2">
+                评价
+              </view>
+              <view catchtap='del' bindtap='del' data-index='{{index}}' data-status="-1" data-orderid="{{item.orderUUId}}" class="order-btn2">删除订单</view>
+            </view>
+            <!--服务按钮 end  -->
+
+          </view>
+        </block>
+        <!-- 订单状态 end  -->
+
+
+        <view wx:if="{{item.status==0}}">
+          <view class="order-btn">
+            <view bindtap='pays' data-index='{{index}}' data-orderid="{{goods.uuid}}" class="order-btn2">去付款</view>
+          </view>
+          <!-- <view bindtap='cancel' data-index='{{index}}' data-orderid="{{goods.uuid}}" class="order-btn2">取消订单</view> -->
+        </view>
+
+        <view style="height:20rpx;background-color:#fff"></view>
+        <view style="width:100%;border:2rpx solid #eee;"></view>
+        <view style="height:20rpx;background-color:#fff"></view>
+        <!-- </block> -->
+        <!-- 订单商品 end  -->
+
+        <view class="order-summary" style="width: 100%;height:{{px2rpxHeight*100}}px;font-size:29rpx; ">
+          <view wx:if="{{item.flashbuy==1}}" style='line-height:{{px2rpxHeight*0}}px;font-size:12px'>普通购买</view>
+          <view wx:if="{{item.flashbuy==2}}" style='line-height:{{px2rpxHeight*0}}px;font-size:12px'>闪购购买</view>
+          <view style='line-height:{{px2rpxHeight*80}}px'> 共{{item.size}}件商品合计:¥{{item.moneys}}</view>
+        </view>
+      </block>
+    </view>
+  </scroll-view>
+</block>
+
+<!--评价售后 start  -->
+<view class='commet-sale' hidden='{{commet_afterSale}}'>
+  <!-- 订单商品 start  -->
+  <block wx:for="{{myorder[index]}}" wx:for-item="goods" wx:key="{{goods.id}}">
+    <view class="myorder_each">
+      <view class="goods-info">
+        <navigator url='/pages/goods_detail/goods_detail'>
+          <view class="goods-img">
+            <image src="{{serverUrl + goods.goodsImg}}"></image>
+          </view>
+        </navigator>
+        <view class="goods-name">
+          <view>
+            <!-- {{goods.goodsName}}  -->
+          </view>
+          <view class="guige">
+            商品规格: {{goods.specification}}
+          </view>
+        </view>
+        <view class="goods-price">
+          <view class="buy-price">¥{{goods.price}}</view>
+          <view class="buy-number">x{{goods.num}}</view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <!-- 订单商品 end  -->
+</view>
+<!--评价售后 end  -->
