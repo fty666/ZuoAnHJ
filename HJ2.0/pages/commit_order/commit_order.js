@@ -41,14 +41,14 @@ Page({
     couponList: {
       coupon_id: '',
       money: 0
-    }
+    },
+    flashBuy: '', //判断是否闪钩
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log(options)
     let that = this;
     let goodsInfo = [];
     let commit_order = {};
@@ -137,7 +137,6 @@ Page({
           ids: res.data.data.id,
           addCity: res.data.addrCity
         });
-
       });
     }
   },
@@ -268,7 +267,6 @@ Page({
 
   //单位名称
   units: function(e) {
-    console.log(e.detail.value)
     if (e.detail.value == '') {
       wx.showToast({
         title: '发票填写有误',
@@ -284,7 +282,6 @@ Page({
   // 纳税人号码
   payer: function(e) {
     let payers = e.detail.value;
-    console.log(payers)
     if (!util.checkReg(7, payers)) {
       wx.showToast({
         title: '输入有误',
@@ -335,20 +332,34 @@ Page({
     this.setData({
       yhq: false
     })
-    let summoney=this.data.summoney+this.data.couponList.money;
-    this.setData({
-      summoney:summoney
-    })
+    app.globalData.prcirCounp = this.data.summoney;
+    if (this.data.couponList.money) {
+      let summoney = this.data.summoney + this.data.couponList.money;
+      this.setData({
+        summoney: summoney,
+        couponList: {}
+      })
+    }
   },
   onMyEvent(e) {
     // console.log(e.detail);
-    let summoney = this.data.summoney - e.detail.money;
-    this.setData({
-      yhq: true,
-      coupon: '优惠券抵扣' + e.detail.money + '元',
-      couponList: e.detail,
-      summoney: summoney
-    });
+    if (e.detail.money) {
+      let summoney = this.data.summoney - e.detail.money;
+      this.setData({
+        yhq: true,
+        coupon: '优惠券抵扣' + e.detail.money + '元',
+        couponList: e.detail,
+        summoney: summoney
+      });
+    } else {
+      wx.showModal({
+        title: '提示',
+        content: '取消优惠券或优惠券不满足条件',
+      });
+      this.setData({
+        yhq: true
+      })
+    }
   },
   /**
    * 提交订单
@@ -464,7 +475,6 @@ Page({
       })
       return false;
     }
-
     // 测试支付
     // wx.request({
     //   url: 'http://192.168.1.153:8080/redwine/order/huidiao',
@@ -488,42 +498,109 @@ Page({
     // })
     // -----------------------------------------------------
     // 微信支付
-    let mydata = {
-      body: that.data.gnames,
-      uuid: that.data.ZFuuid,
-      money: that.data.summoney,
-      openid: app.globalData.weChat
+    if (that.data.summoney <= 0) {
+      wx.showToast({
+        title: '支付金额不正确',
+        icon: 'none'
+      })
+      return false;
     }
-    util.myWxRequest(app.globalData.wxPayUrl, mydata, function(res) {
-      // 微信支付，调用接口拿取返回的参数，进行支付
-      wx.requestPayment({
-        'timeStamp': res.data.data.timeStamp,
-        'nonceStr': res.data.data.nonceStr,
-        'package': res.data.data.package,
-        'signType': 'MD5',
-        'paySign': res.data.data.paySign,
-        'success': function(res) {
-          // 发票支付
-          util.myWxRequest(app.globalData.addInvoiceUrl, mydatas, function(res) {});
-          // 优惠券绑定
-          util.myWxRequest(app.globalData.updateOrderCoupon, {
-            couponId: that.data.couponList.coupon_id,
-            soldPrice: that.data.summoney,
-            orderUUId: that.data.ZFuuid,
-            userId: app.globalData.userId
-          }, function(res) {})
-          app.globalData.buyGoods = '';
-          // 支付成功通知商家
-          let now = util.formatDate(new Date().getTime());
-          let userno = app.globalData.userId;
-          sendSocket(("时间：" + now + ' 发送人：'), userno);
-          wx.navigateTo({
-            url: '/pages/pay_success/pay_success'
+    var panadd = that.data.address.addrCity + that.data.address.addrDetail;
+    var flashbuy = app.globalData.flashbuy;
+    if (flashbuy == 2) {
+      util.myWxRequest(app.globalData.distribution, {
+        address: panadd
+      }, function(res) {
+        if (res.data.data.type == 2) {
+          wx.showToast({
+            title: '该区域不在配送范围',
+            icon: 'none'
           })
-        },
-        'fail': function(res) {}
-      });
-    })
+          return false;
+        } else {
+          let mydata = {
+            body: that.data.gnames,
+            uuid: that.data.ZFuuid,
+            money: that.data.summoney,
+            openid: app.globalData.weChat
+          }
+          util.myWxRequest(app.globalData.wxPayUrl, mydata, function(res) {
+            // 微信支付，调用接口拿取返回的参数，进行支付
+            wx.requestPayment({
+              'timeStamp': res.data.data.timeStamp,
+              'nonceStr': res.data.data.nonceStr,
+              'package': res.data.data.package,
+              'signType': 'MD5',
+              'paySign': res.data.data.paySign,
+              'success': function(res) {
+                // 发票支付
+                util.myWxRequest(app.globalData.addInvoiceUrl, mydatas, function(res) {});
+                // 优惠券绑定
+                if (that.data.couponList.userId) {
+                  util.myWxRequest(app.globalData.updateOrderCoupon, {
+                    couponId: that.data.couponList.coupon_id,
+                    soldPrice: that.data.summoney,
+                    orderUUId: that.data.ZFUUid,
+                    userId: app.globalData.userId
+                  }, function(res) {})
+                }
+                app.globalData.buyGoods = '';
+                app.globalData.prcirCounp = '';
+                // 支付成功通知商家
+                let now = util.formatDate(new Date().getTime());
+                let userno = app.globalData.userId;
+                sendSocket(("时间：" + now + ' 发送人：'), userno);
+                wx.navigateTo({
+                  url: '/pages/pay_success/pay_success'
+                })
+              },
+              'fail': function(res) {}
+            });
+          })
+        }
+      })
+    }
+    if (flashbuy == 1) {
+      let mydata = {
+        body: that.data.gnames,
+        uuid: that.data.ZFuuid,
+        money: that.data.summoney,
+        openid: app.globalData.weChat
+      }
+      util.myWxRequest(app.globalData.wxPayUrl, mydata, function(res) {
+        // 微信支付，调用接口拿取返回的参数，进行支付
+        wx.requestPayment({
+          'timeStamp': res.data.data.timeStamp,
+          'nonceStr': res.data.data.nonceStr,
+          'package': res.data.data.package,
+          'signType': 'MD5',
+          'paySign': res.data.data.paySign,
+          'success': function(res) {
+            // 发票支付
+            util.myWxRequest(app.globalData.addInvoiceUrl, mydatas, function(res) {});
+            // 优惠券绑定
+            if (that.data.couponList.userId) {
+              util.myWxRequest(app.globalData.updateOrderCoupon, {
+                couponId: that.data.couponList.coupon_id,
+                soldPrice: that.data.summoney,
+                orderUUId: that.data.ZFUUid,
+                userId: app.globalData.userId
+              }, function(res) {})
+            }
+            app.globalData.buyGoods = '';
+            app.globalData.prcirCounp = '';
+            // 支付成功通知商家
+            let now = util.formatDate(new Date().getTime());
+            let userno = app.globalData.userId;
+            sendSocket(("时间：" + now + ' 发送人：'), userno);
+            wx.navigateTo({
+              url: '/pages/pay_success/pay_success'
+            })
+          },
+          'fail': function(res) {}
+        });
+      })
+    }
     // -------------------------------------------------
   },
 })
@@ -533,7 +610,7 @@ Page({
  */
 function frank(that) {
   let orders = that.data.commit_order;
-  console.log(orders)
+  // console.log(orders)
   let adds = that.data.address;
   let data = '';
   let num = '';
@@ -594,7 +671,7 @@ function frank(that) {
       util.myWxRequest(app.globalData.getOrdersUUIDByPayUUID, {
         orderUUId: ZFUUid
       }, function(res) {
-        console.log(res)
+        // console.log(res)
         let Xdata = res.data.data;
         let len = Xdata.length;
         for (let y = 0; y < len; y++) {
@@ -690,7 +767,7 @@ function frank(that) {
           goodsId: Ggid,
           uuid: Uuid
         }, function(res) {
-          console.log(res)
+          // console.log(res)
           // 计算邮费总价格，获取传来的参数
           let delivery = res.data.data;
           let len = delivery.length;
@@ -871,6 +948,6 @@ function sendSocket(mymessage, userno) {
 
   wx.onSocketError(function(res) {
     socketOpen = false;
-    console.log('WebSocket连接打开失败，请检查！')
+    // console.log('WebSocket连接打开失败，请检查！')
   });
 }

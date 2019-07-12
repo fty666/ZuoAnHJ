@@ -59,18 +59,17 @@
         </view>
         <view style='border:10rpx solid #ddd'></view>
       </block>
-
+<!-- 
       <view class="shezhi" style="display:flex;width:100%;height:{{px2rpxHeight*120}}px;">
         <label>
           <text decode="{{true}}">设置默认地址&nbsp;&nbsp;&nbsp;</text>
         </label>
-        <!-- 设置默认框 -->
         <checkbox-group name="checkbox">
           <label>
             <checkbox value="true" checked="checked" style='margin-left:195px;' />
           </label>
         </checkbox-group>
-      </view>
+      </view> -->
 
       <!--保存  -->
       <view style='border:10rpx solid #ddd'></view>

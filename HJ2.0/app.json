@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/trader/index/index",
+    "pages/address/add/add",
     "pages/goods_detail/goods_detail",
     "pages/coupon/coupon",
     "pages/users/nechen/nechen",
@@ -19,7 +20,6 @@
     "pages/trader/user/user",
     "pages/self_extraction/self_extraction",
     "pages/users/users/users",
-    "pages/address/add/add",
     "pages/pay_success/pay_success",
     "pages/address/insert/insert",
     "pages/trader/note/note",

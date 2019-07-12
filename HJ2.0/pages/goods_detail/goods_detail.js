@@ -34,7 +34,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    // console.log(options)
     this.setData({
       id: options.id,
     })
@@ -290,7 +289,6 @@ Page({
    */
   addToCart: function(e) {
     var that = this;
-    // console.log(e)
     let mygoodsId = e.currentTarget.dataset.id;
     // 折扣满减ID
     let activityId = e.currentTarget.dataset.activityid;
@@ -477,6 +475,7 @@ function payment(that) {
     away: away,
     flashbuy: that.data.flashbuy
   };
+  app.globalData.flashbuy=that.data.flashbuy;
   wx.navigateTo({
     url: '/pages/commit_order/commit_order'
   })

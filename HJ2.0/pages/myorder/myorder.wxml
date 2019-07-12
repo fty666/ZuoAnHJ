@@ -9,7 +9,7 @@
   <view class='fon1'>您还没有相关订单</view>
 </block>
 <block wx:else>
-  <scroll-view scroll-y style="width:100%;height:1120rpx;margin-top:5px;" bindscrolltoupper='scrollToLower'>
+  <scroll-view scroll-y style="width:100%;height:{{px2rpxHeight*1200}}px;margin-top:5px;" bindscrolltoupper='scrollToLower'>
     <view class="{{bj==2?'bj':'bj2'}}">
       <!--循环订单  -->
       <block wx:for="{{myorder}}" wx:key="{{item.uuid}}">

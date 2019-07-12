@@ -83,20 +83,6 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
    * 全部
    */
   allOrders: function (e) {
@@ -123,6 +109,7 @@ Page({
   pays: function (e) {
     let index = e.currentTarget.dataset.index;
     app.globalData.buyGoods = this.data.myorder[index];
+    app.globalData.flashbuy=1;
     wx.nextTick(function () {
       wx.navigateTo({
         url: '/pages/commit_order/commit_order',

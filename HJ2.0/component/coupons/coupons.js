@@ -54,14 +54,14 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    byback(e) {
+    // 选择优惠券
+    radioChange(e) {
       let that = this;
       let datas = e.target.dataset.index;
-      // console.log(e.target.dataset.index)
-      if (e.target.dataset.index=={}){
-        wx.showToast({
-          title: '重新点击',
-        })
+      console.log(datas.conditions);
+      console.log(app.globalData.prcirCounp)
+      if (datas.conditions > app.globalData.prcirCounp){
+        this.triggerEvent('myevent', '');
       }else{
         this.triggerEvent('myevent', datas);
       }

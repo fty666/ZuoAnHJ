@@ -561,6 +561,7 @@ function payment(that){
   if (that.data.totalPrice > 0) {
     let totalPrice = that.data.totalPrice;
     app.globalData.buyGoods = { goodsInfo: buy_goods, soldPrice: totalPrice, transportation_expenses: '0.00', receipt: '', msg: '',flashBuy:that.data.flashBuy };
+    app.globalData.flashbuy = that.data.flashBuy;
     wx: wx.navigateTo({
       url: '/pages/commit_order/commit_order'
     })

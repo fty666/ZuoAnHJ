@@ -176,12 +176,12 @@
   <view class="custom-service immediate-sale" style="width:{{px2rpxWidth*220}}px;height:{{px2rpxHeight*108}}px;">
     <view bindtap='immediatePurchase'>立即购买</view>
   </view>
-  <view class="custom-service immediate-sale" style="width:{{px2rpxWidth*220}}px;height:{{px2rpxHeight*108}}px;background:#aaa;letter-spacing: 5px;">
+  <view class="custom-service immediate-sale" style="width:{{px2rpxWidth*220}}px;height:{{px2rpxHeight*108}}px;background:#f5bc32;letter-spacing: 5px;">
     <view bindtap='flashShow'>闪购</view>
   </view>
 </view>
 <!-- 闪购内容 -->
-<view class='San' style='height:{{px2rpxHeight*500}}px;bottom:{{px2rpxHeight*80}}px' wx:if="{{flash==true}}">
+<view class='San' style='height:{{px2rpxHeight*500}}px;bottom:0px;z-index:999999' wx:if="{{flash==true}}">
   <view style='display:flex;'>
     <view>
       <image src="{{serverUrl+goodsInfo.ListPicture.img}}" style="width:{{px2rpxWidth*150}}px;height:{{px2rpxHeight*150}}px;margin:{{px2rpxHeight*30}}px {{px2rpxWidth*30}}px;border-radius:5px " />

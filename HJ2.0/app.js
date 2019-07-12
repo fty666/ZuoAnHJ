@@ -1,13 +1,12 @@
 //app.js
-// var baseUrl = 'https://www.zuoancellar.com/';
-var baseUrl = 'http://39.105.187.204:8080/';
+var baseUrl = 'https://www.zuoancellar.com/';
+// var baseUrl = 'http://39.105.187.204:8080/';
 // var baseUrl = 'http://192.168.1.154:8080/';
 const uploadAliyun = require('./weixinFileToaliyun/uploadAliyun.js');
 const env = require('./weixinFileToaliyun/env.js');
 const amapFile = require('./utils/amap-wx.js');
 const mtjwxsdk = require('./utils/mtj-wx-sdk.js');
 // 高德地图key 
-// const wxGaodeMapKey = 'e0aa130ad1e3021c27bc637f22eda880'
 const wxGaodeMapKey = 'f097b7e83e12c21712873861d39ac6a5'
 App({
   onLaunch: function() {
@@ -23,8 +22,8 @@ App({
         if (res.code) {
           //发起网络请求
           wx.request({
-            // url: 'https://www.zuoancellar.com/redwine/user/userLogin',
-            url: 'http://39.105.187.204:8080/redwine/user/userLogin',
+            url: 'https://www.zuoancellar.com/redwine/user/userLogin',
+            // url: 'http://39.105.187.204:8080/redwine/user/userLogin',
             // url: 'http://192.168.1.154:8080//redwine/user/userLogin',
             method: 'POST',
             data: {
@@ -61,10 +60,7 @@ App({
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
             success: res => {
-              // 可以将 res 发送给后台解码出 unionId
               that.globalData.userInfo = res.userInfo;
-              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-              // 所以此处加入 callback 以防止这种情况
               if (that.userInfoReadyCallback) {
                 that.userInfoReadyCallback(res)
               }
@@ -79,6 +75,40 @@ App({
       px2rpxWidth: systemInfo.windowWidth / 750,
       px2rpxHeight: systemInfo.screenHeight / 1334
     });
+  },
+  //更新下载 
+  onLoad() {
+    // 用户版本更新
+    if (wx.canIUse("getUpdateManager")) {
+      let updateManager = wx.getUpdateManager();
+      updateManager.onCheckForUpdate((res) => {
+        // 请求完新版本信息的回调
+        console.log(res.hasUpdate);
+      })
+      updateManager.onUpdateReady(() => {
+        wx.showModal({
+          title: '更新提示',
+          content: '新版本已经准备好，是否重启应用？',
+          success: (res) => {
+            if (res.confirm) {
+              // 新的版本已经下载好，调用 applyUpdate 应用新版本并重启
+              updateManager.applyUpdate();
+            } else if (res.cancel) {
+              return false;
+            }
+          }
+        })
+      })
+      updateManager.onUpdateFailed(() => {
+        // 新的版本下载失败
+        wx.hideLoading();
+        wx.showModal({
+          title: '升级失败',
+          content: '新版本下载失败，请检查网络！',
+          showCancel: false
+        });
+      });
+    }
   },
   /**
    * 上传图片二次封装
@@ -142,6 +172,7 @@ App({
   },
 
   globalData: {
+    prcirCounp: '', //判断是否能使用优惠券
     SQjin: '', //判断申请经销商
     userInfo: null,
     buyGoods: null,
@@ -154,6 +185,8 @@ App({
     nickName: '',
     // 授权
     empower: true,
+    // 判断闪购
+    flashbuy:'',
     accredit: '',
     // 传递用户ID
     sellId: '',
@@ -405,5 +438,7 @@ App({
     selecCoupon: baseUrl + 'redwine/user/selectCouponByUser',
     // 优惠券id加入订单
     updateOrderCoupon: baseUrl + 'redwine/order/updateOrderCoupon',
+    // 判断闪购
+    distribution: baseUrl + 'redwine/order/distribution'
   },
 })

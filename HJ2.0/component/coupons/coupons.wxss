@@ -5,8 +5,10 @@
 .font1 {
   width: 30%;
   text-align: center;
-  font-size: 40px;
+  font-size: 25px;
   color: white;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .font2 {
@@ -29,5 +31,7 @@
   text-align: center;
   color:#ddd;
   letter-spacing: 5px;
-
 }
+/* page{
+  background: white;
+} */

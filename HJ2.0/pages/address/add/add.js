@@ -35,11 +35,11 @@ Page({
       return false;
     }
     var receiveName = e.detail.value.receiveName;
-    if (e.detail.value.checkbox[0] == 'true') {
+    // if (e.detail.value.checkbox[0] == 'true') {
       var defaults = 1;
-    } else {
-      var defaults = 0;
-    }
+    // } else {
+    //   var defaults = 0;
+    // }
     util.myWxRequest(app.globalData.addAddrUrl, {
       user_id: app.globalData.userId,
       receiveName: receiveName,
